@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | CHEN&#39;s Blog</title>
+  <title>Python中的unicode及ascii编码 | CHEN&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="CHEN's Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Python中的unicode及ascii编码">
+<meta property="og:url" content="http://yoursite.com/2017/03/16/关于python的unicode和ascii的编码问题/index.html">
 <meta property="og:site_name" content="CHEN's Blog">
+<meta property="og:updated_time" content="2017-03-16T08:59:04.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHEN's Blog">
+<meta name="twitter:title" content="Python中的unicode及ascii编码">
   
   
     <link rel="icon" href="/img/xss.png">
@@ -33,8 +34,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -139,7 +140,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/杂记/" style="font-size: 20px;">杂记</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/经历/" style="font-size: 10px;">经历</a> <a href="/tags/绕过技巧/" style="font-size: 10px;">绕过技巧</a> <a href="/tags/课堂笔记/" style="font-size: 10px;">课堂笔记</a>
+                        <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/杂记/" style="font-size: 20px;">杂记</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/经历/" style="font-size: 10px;">经历</a> <a href="/tags/绕过技巧/" style="font-size: 10px;">绕过技巧</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/课堂笔记/" style="font-size: 10px;">课堂笔记</a>
                     </div>
                 </section>
                 
@@ -217,188 +218,188 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="[layout]-关于python的unicode和ascii的编码问题" class="article article-type-[layout]" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-[layout]">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/04/06/杂谈/" class="archive-article-date">
-      <time datetime="2017-04-06T13:14:54.000Z" itemprop="datePublished">04-06</time>
+    <div class="article-meta">
+      <a href="/2017/03/16/关于python的unicode和ascii的编码问题/" class="article-date">
+      <time datetime="2017-03-16T08:56:53.027Z" itemprop="datePublished">2017-03-16</time>
 </a>
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/杂谈/">杂谈</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python中的unicode及ascii编码
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/心得/">心得</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂记/">杂记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+      </header>
       
-        </div></section>
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
+    
+    <div class="article-entry" itemprop="articleBody">
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
+          
+        
+      
+    </div>
     
-    <article class="archive-article archive-type-[layout]">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/08/28/Linux/" class="archive-article-date">
-      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">08-28</time>
-</a>
-        </div>
-         
+  </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/28/Linux/">Linux</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/16/关于python的unicode和ascii的编码问题/">Python中的unicode及ascii编码</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 CHEN 的个人博客">CHEN</a></p>
+        <p><span>发布时间:</span>2017年03月16日 - 16时56分</p>
+        <p><span>最后更新:</span>2017年03月16日 - 16时59分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/16/关于python的unicode和ascii的编码问题/" title="Python中的unicode及ascii编码">http://yoursite.com/2017/03/16/关于python的unicode和ascii的编码问题/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/16/关于python的unicode和ascii的编码问题/　　作者: CHEN" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/04/06/杂谈/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          杂谈
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/28/XSS绕过技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">XSS绕过技巧</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-[layout]">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/08/28/XSS绕过技巧/" class="archive-article-date">
-      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">08-28</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/28/XSS绕过技巧/">XSS绕过技巧</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss/">xss</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绕过技巧/">绕过技巧</a></li></ul>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/03/16/关于python的unicode和ascii的编码问题/" data-title="Python中的unicode及ascii编码" data-url="http://yoursite.com/2017/03/16/关于python的unicode和ascii的编码问题/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chenguilin"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/04/06/杂谈/" title="上一篇: 杂谈">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/08/28/XSS绕过技巧/" title="下一篇: XSS绕过技巧">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/杂谈/">杂谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/关于python的unicode和ascii的编码问题/">Python中的unicode及ascii编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/XSS绕过技巧/">XSS绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/java/">java</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/记一次搭建博客的经历/">记一次搭建博客的经历</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-[layout]">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/08/28/java/" class="archive-article-date">
-      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">08-28</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/28/java/">java</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课堂笔记/">课堂笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-[layout]">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/08/26/记一次搭建博客的经历/" class="archive-article-date">
-      <time datetime="2016-08-26T14:11:48.000Z" itemprop="datePublished">08-26</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/26/记一次搭建博客的经历/">记一次搭建博客的经历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/杂记/">杂记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经历/">经历</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
@@ -463,17 +464,6 @@
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
