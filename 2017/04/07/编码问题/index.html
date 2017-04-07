@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="CHEN's Blog">
 <meta property="og:description" content="在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。于是便开始查询了相关资料。
 其中困扰的问题是：1,windows的自带记事本下的ANSI编码是什么？2,设置了charset=gbk/gb2312为什么还会回乱码？3,pageEncoding和charset的区别？4,如果charset=utf-8又会怎么">
-<meta property="og:updated_time" content="2017-04-07T14:33:22.533Z">
+<meta property="og:updated_time" content="2017-04-07T14:41:11.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于字符编码">
 <meta name="twitter:description" content="在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。于是便开始查询了相关资料。
@@ -266,7 +266,7 @@
 <div style="text-align: center">其中困扰的问题是：<br>1,windows的自带记事本下的ANSI编码是什么？<br>2,设置了charset=gbk/gb2312为什么还会回乱码？<br>3,pageEncoding和charset的区别？<br>4,如果charset=utf-8又会怎么样？<br></div>
 
 <hr>
-<p style="text-align:right">先了解一些基本知识。</p>
+<p style="text-align:center;">先了解一些基本知识。</p>
 
 <h1 id="关于Jsp"><a href="#关于Jsp" class="headerlink" title="关于Jsp"></a>关于Jsp</h1><p>在JSP标准的语法中，如果pageEncoding属性存在，那么JSP页面的字符编码方式就由pageEncoding决定，否则就由contentType属性中的 charset决定，如果charset也不存在，JSP页面的字符编码方式就采用默认的ISO-8859-1。</p>
 <h2 id="pageEncoding"><a href="#pageEncoding" class="headerlink" title="pageEncoding"></a>pageEncoding</h2><p>pageEncoding的内容只是用于jsp输出时的编码，不会作为header发出去的。</p>
@@ -303,7 +303,7 @@
         <p><span>本文标题:</span><a href="/2017/04/07/编码问题/">关于字符编码</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 CHEN 的个人博客">CHEN</a></p>
         <p><span>发布时间:</span>2017年04月07日 - 20时50分</p>
-        <p><span>最后更新:</span>2017年04月07日 - 22时33分</p>
+        <p><span>最后更新:</span>2017年04月07日 - 22时41分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/07/编码问题/" title="关于字符编码">http://yoursite.com/2017/04/07/编码问题/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/07/编码问题/　　作者: CHEN" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -400,7 +400,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/编码问题/">关于字符编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/杂谈/">杂谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/XSS绕过技巧/">XSS绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/java/">java</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/记一次搭建博客的经历/">记一次搭建博客的经历</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/编码问题/">关于字符编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/杂谈/">杂谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/XSS绕过技巧/">XSS绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/java/">java</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/记一次搭建博客的经历/">记一次搭建博客的经历</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

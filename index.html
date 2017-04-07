@@ -253,7 +253,7 @@
 <div style="text-align: center">其中困扰的问题是：<br>1,windows的自带记事本下的ANSI编码是什么？<br>2,设置了charset=gbk/gb2312为什么还会回乱码？<br>3,pageEncoding和charset的区别？<br>4,如果charset=utf-8又会怎么样？<br></div>
 
 <hr>
-<p style="text-align:right">先了解一些基本知识。</p>
+<p style="text-align:center;">先了解一些基本知识。</p>
 
 <h1 id="关于Jsp"><a href="#关于Jsp" class="headerlink" title="关于Jsp"></a>关于Jsp</h1><p>在JSP标准的语法中，如果pageEncoding属性存在，那么JSP页面的字符编码方式就由pageEncoding决定，否则就由contentType属性中的 charset决定，如果charset也不存在，JSP页面的字符编码方式就采用默认的ISO-8859-1。</p>
 <h2 id="pageEncoding"><a href="#pageEncoding" class="headerlink" title="pageEncoding"></a>pageEncoding</h2><p>pageEncoding的内容只是用于jsp输出时的编码，不会作为header发出去的。</p>
@@ -374,67 +374,6 @@
 
 
   
-    <article id="[layout]-Linux" class="article article-type-[layout]" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/28/Linux/" class="article-date">
-      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">2016-08-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/28/Linux/">Linux</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="一般来说著名的linux系统基本上分两大类："><a href="#一般来说著名的linux系统基本上分两大类：" class="headerlink" title="一般来说著名的linux系统基本上分两大类："></a>一般来说著名的linux系统基本上分两大类：</h1><p>1.RedHat系列：Redhat、Centos、Fedora等<br>2.Debian系列：Debian、Ubuntu等 </p>
-<h2 id="RedHat-系列"><a href="#RedHat-系列" class="headerlink" title="RedHat 系列"></a>RedHat 系列</h2><p>1 常见的安装包格式 rpm包,安装rpm包的命令是“rpm -参数”<br>2 包管理工具 yum<br>3 支持tar包 </p>
-<h2 id="Debian系列"><a href="#Debian系列" class="headerlink" title="Debian系列"></a>Debian系列</h2><p>1 常见的安装包格式 deb包,安装deb包的命令是“dpkg -参数”<br>2 包管理工具 apt-get<br>3 支持tar包 </p>
-<h3 id="一、yum安装。"><a href="#一、yum安装。" class="headerlink" title="一、yum安装。"></a>一、yum安装。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">yum安装常用软件的命令</div><div class="line">#yum check-update</div><div class="line">#yum remove 软件包名</div><div class="line">#yum install 软件包名</div><div class="line">#yum update 软件包名</div><div class="line">yum命令常见使用方法</div><div class="line">yum -y install 包名（支持*） ：自动选择y，全自动</div><div class="line">yum install 包名（支持*） ：手动选择y or n</div><div class="line">yum remove 包名（不支持*）</div><div class="line">rpm -ivh 包名（支持*）：安装rpm包</div><div class="line">rpm -e 包名（不支持*）：卸载rpm包</div></pre></td></tr></table></figure>
-<h3 id="二、apt-get安装。"><a href="#二、apt-get安装。" class="headerlink" title="二、apt-get安装。"></a>二、apt-get安装。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">apt-cache search package 搜索软件包</div><div class="line">apt-cache show package 获取包的相关信息，如说明、大小、版本等</div><div class="line">sudo apt-get install package 安装包</div><div class="line">sudo apt-get install package --reinstall 重新安装包</div><div class="line">sudo apt-get -f install 修复安装</div><div class="line">sudo apt-get remove package 删除包</div><div class="line">sudo apt-get remove package --purge 删除包，包括配置文件等</div><div class="line">sudo apt-get update 更新源</div><div class="line">sudo apt-get upgrade 更新已安装的包</div><div class="line">sudo apt-get dist-upgrade 升级系统</div><div class="line">apt-cache depends package 了解使用该包依赖那些包</div><div class="line">apt-cache rdepends package 查看该包被哪些包依赖</div><div class="line">sudo apt-get build-dep package 安装相关的编译环境</div><div class="line">apt-get source package 下载该包的源代码</div><div class="line">sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包</div><div class="line">sudo apt-get check 检查是否有损坏的依赖</div></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="[layout]-XSS绕过技巧" class="article article-type-[layout]" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -492,6 +431,67 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss/">xss</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绕过技巧/">绕过技巧</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="[layout]-Linux" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/28/Linux/" class="article-date">
+      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">2016-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/28/Linux/">Linux</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="一般来说著名的linux系统基本上分两大类："><a href="#一般来说著名的linux系统基本上分两大类：" class="headerlink" title="一般来说著名的linux系统基本上分两大类："></a>一般来说著名的linux系统基本上分两大类：</h1><p>1.RedHat系列：Redhat、Centos、Fedora等<br>2.Debian系列：Debian、Ubuntu等 </p>
+<h2 id="RedHat-系列"><a href="#RedHat-系列" class="headerlink" title="RedHat 系列"></a>RedHat 系列</h2><p>1 常见的安装包格式 rpm包,安装rpm包的命令是“rpm -参数”<br>2 包管理工具 yum<br>3 支持tar包 </p>
+<h2 id="Debian系列"><a href="#Debian系列" class="headerlink" title="Debian系列"></a>Debian系列</h2><p>1 常见的安装包格式 deb包,安装deb包的命令是“dpkg -参数”<br>2 包管理工具 apt-get<br>3 支持tar包 </p>
+<h3 id="一、yum安装。"><a href="#一、yum安装。" class="headerlink" title="一、yum安装。"></a>一、yum安装。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">yum安装常用软件的命令</div><div class="line">#yum check-update</div><div class="line">#yum remove 软件包名</div><div class="line">#yum install 软件包名</div><div class="line">#yum update 软件包名</div><div class="line">yum命令常见使用方法</div><div class="line">yum -y install 包名（支持*） ：自动选择y，全自动</div><div class="line">yum install 包名（支持*） ：手动选择y or n</div><div class="line">yum remove 包名（不支持*）</div><div class="line">rpm -ivh 包名（支持*）：安装rpm包</div><div class="line">rpm -e 包名（不支持*）：卸载rpm包</div></pre></td></tr></table></figure>
+<h3 id="二、apt-get安装。"><a href="#二、apt-get安装。" class="headerlink" title="二、apt-get安装。"></a>二、apt-get安装。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">apt-cache search package 搜索软件包</div><div class="line">apt-cache show package 获取包的相关信息，如说明、大小、版本等</div><div class="line">sudo apt-get install package 安装包</div><div class="line">sudo apt-get install package --reinstall 重新安装包</div><div class="line">sudo apt-get -f install 修复安装</div><div class="line">sudo apt-get remove package 删除包</div><div class="line">sudo apt-get remove package --purge 删除包，包括配置文件等</div><div class="line">sudo apt-get update 更新源</div><div class="line">sudo apt-get upgrade 更新已安装的包</div><div class="line">sudo apt-get dist-upgrade 升级系统</div><div class="line">apt-cache depends package 了解使用该包依赖那些包</div><div class="line">apt-cache rdepends package 查看该包被哪些包依赖</div><div class="line">sudo apt-get build-dep package 安装相关的编译环境</div><div class="line">apt-get source package 下载该包的源代码</div><div class="line">sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包</div><div class="line">sudo apt-get check 检查是否有损坏的依赖</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
 
       
