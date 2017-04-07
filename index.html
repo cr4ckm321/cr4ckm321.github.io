@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/杂记/" style="font-size: 20px;">杂记</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/经历/" style="font-size: 10px;">经历</a> <a href="/tags/绕过技巧/" style="font-size: 10px;">绕过技巧</a> <a href="/tags/课堂笔记/" style="font-size: 10px;">课堂笔记</a>
+                        <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/杂记/" style="font-size: 20px;">杂记</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/经历/" style="font-size: 10px;">经历</a> <a href="/tags/绕过技巧/" style="font-size: 10px;">绕过技巧</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/课堂笔记/" style="font-size: 10px;">课堂笔记</a>
                     </div>
                 </section>
                 
@@ -221,6 +221,93 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="[layout]-编码问题" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/07/编码问题/" class="article-date">
+      <time datetime="2017-04-07T12:50:00.000Z" itemprop="datePublished">2017-04-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/编码问题/">关于字符编码</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。<br>于是便开始查询了相关资料。</p>
+<div style="text-align: center">其中困扰的问题是：<br>1,windows的自带记事本下的ANSI编码是什么？<br>2,设置了charset=gbk/gb2312为什么还会回乱码？<br>3,pageEncoding和charset的区别？<br>4,如果charset=utf-8又会怎么样？<br></div>
+
+<hr>
+<p style="text-align:right">先了解一些基本知识。</p>
+
+<h1 id="关于Jsp"><a href="#关于Jsp" class="headerlink" title="关于Jsp"></a>关于Jsp</h1><p>在JSP标准的语法中，如果pageEncoding属性存在，那么JSP页面的字符编码方式就由pageEncoding决定，否则就由contentType属性中的 charset决定，如果charset也不存在，JSP页面的字符编码方式就采用默认的ISO-8859-1。</p>
+<h2 id="pageEncoding"><a href="#pageEncoding" class="headerlink" title="pageEncoding"></a>pageEncoding</h2><p>pageEncoding的内容只是用于jsp输出时的编码，不会作为header发出去的。</p>
+<p>pageEncoding   是通知web server jsp的编码。&lt;%@pagepageEncoding=”UTF-8” %&gt;作用：<br>告诉JSP编译器在将JSP文件编译成Servlet时使用的编码。通常，在JSP内部定义的字符串(直接在JSP中定义，而不是从浏览器提交的数据)出现乱码时，很多都是由于该参数设置错误引起的。</p>
+<p>pageEncoding是jsp文件本身的编码。</p>
+<h2 id="ContentType"><a href="#ContentType" class="headerlink" title="ContentType"></a>ContentType</h2><p>ContentType属性指定响应的 HTTP内容类型。如果未指定 ContentType，默认为Text/Html。</p>
+<p>ContentType属性指定了MIME类型和JSP页面回应时的字符编码方式。MIME类型的默认值是“text/html”; 字符编码方式的默认值是“ISO-8859-1”. MIME类型和字符编码方式由分号隔开。</p>
+<p>contentType的charset是指服务器发送给客户端时的内容编码，contentType里的charset=utf-8是指示页面的输出方式为utf-8。</p>
+<h2 id="编码阶段"><a href="#编码阶段" class="headerlink" title="编码阶段"></a>编码阶段</h2><p>JSP编码要经过三个阶段，第一阶段会用pageEncoding，第二阶段会用utf-8至utf-8，第三阶段就是由Tomcat出来的网页，用的是contentType。</p>
+<p>第一阶段是jsp编译成.Java，它会根据pageEncoding的设定读取jsp，结果是由指定的编码方案翻译成统一的UTF-8 JAVA源码（即.java），如果pageEncoding设定错了，或没有设定，出来的就是中文乱码。 </p>
+<p>第二阶段是由JAVAC的JAVA源码至Java byteCode的编译，不论JSP编写时候用的是什么编码方案，经过这个阶段的结果全部是UTF-8的encoding的java源码。 </p>
+<p>JAVAC用UTF-8的encoding读取java源码，编译成UTF-8 encoding的二进制码（即.class），这是JVM对常数字串在二进制码（java encoding）内表达的规范。 </p>
+<p>第三阶段是Tomcat（或其的application Container）载入和执行阶段二的来的JAVA二进制码，输出的结果，也就是在客户端见到的，这时隐藏在阶段一和阶段二的参数contentType就发挥了功效。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>下面总结下，如何防止中文乱码。<br>1、对于同一个应用，最好统一编码，推荐为UTF-8，当然GBK也可以。<br>2、正确设置JSP的pageEncoding参数<br>3、在所有的JSP/Servlet中设置contentType=”text/html;charset=UTF-8”或response.setCharacterEncoding(“UTF-8”)，从而间接实现对浏览器编码的设置。</p>
+<h1 id="补充一点"><a href="#补充一点" class="headerlink" title="补充一点"></a>补充一点</h1><p>1.&lt;%@ page contentType=”text/html; charset=utf-8”%&gt;<br>2.&lt;%@ page pageEncoding=”utf-8”%&gt;<br>3.&lt;.meta http-equiv=”Content-Type” content=”text/html; charset=utf-8”&gt;<br>4.&lt;% request.setCharacterEncoding(“utf-8”); %&gt;</p>
+<p>1和2都是jsp本身的编码设置，contenttype是服务器发给客户端的内容编码设置，pageencoding是当前jsp页面的本身的编码</p>
+<p>3是HTML网页的编码方式，如果不是jsp页面，普通的HTML里要设置这个才能让中文不乱码<br><a href="http://www.w3school.com.cn/tags/tag_meta.asp" target="_blank" rel="external">Html.mete标签</a></p>
+<p>4是HttpRequest对象本身的编码，是客户端请求时的编码格式。</p>
+<hr>
+<h1 id="关于字符编码"><a href="#关于字符编码" class="headerlink" title="关于字符编码"></a>关于字符编码</h1><h2 id="ANSI"><a href="#ANSI" class="headerlink" title="ANSI"></a>ANSI</h2><p>Windows 里说的「ANSI」其实是 Windows code pages，这个模式根据当前locale选定具体的编码，比如简体中文locale下是GBK</p>
+<p>使用1至4个字节来代表一个字符的各种汉字延伸编码方式，称为 ANSI 编码。在简体中文Windows操作系统中，ANSI 编码代表 GBK 编码；在日文Windows操作系统中，ANSI编码代表Shift_JIS编码。不同ANSI编码之间互不兼容，当信息在国际间交流时，无法将属于两种语言的文字，存储在同一段 ANSI 编码的文本中。当然对于ANSI编码而言，0x00~0x7F之间的字符，依旧是1个字节代表1个字符。这一点是ANSI编码与Unicode编码之间最大也最明显的区别。</p>
+<h2 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h2><p>区分 带BOM的UTF-8 与 无带BOM的UTF-8<br>带BOM的是微软自作聪明的毛病，一般使用不带BOM的UTF-8。</p>
+<p>UTF-8中的字符可以是 1-4 个字节长。UTF-8可以表示Unicode标准中的任意字符。UTF-8向后兼容 ASCII。UTF-8 是网页和电子邮件的首选编码。UTF-8是Unicode的实现方式之一。</p>
+<p>Unicode是一个字符集(character set),utf-8是一种编码(encoding)。</p>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><p>百度百科<br><a href="http://blog.csdn.net/kerrywang/article/details/4454895" target="_blank" rel="external">木头的天空的博客</a><br><a href="https://www.zhihu.com/question/20650946" target="_blank" rel="external">知乎</a><br><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8" target="_blank" rel="external">阮一峰的博客</a><br><a href="http://www.cnblogs.com/muanblog/p/4604809.html" target="_blank" rel="external">JSP编码问题详解</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jsp/">Jsp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unicode/">Unicode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="[layout]-杂谈" class="article article-type-[layout]" itemscope itemprop="blogPost">
   
