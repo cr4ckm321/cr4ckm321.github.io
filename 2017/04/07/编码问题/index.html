@@ -5,19 +5,16 @@
   
   <title>关于字符编码 | CHEN&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。于是便开始查询了相关资料。
-其中困扰的问题是：1,windows的自带记事本下的ANSI编码是什么？2,设置了charset=gbk/gb2312为什么还会回乱码？3,pageEncoding和charset的区别？4,如果charset=utf-8又会怎么">
+  <meta name="description" content="在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。于是便开始查询了相关资料。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于字符编码">
 <meta property="og:url" content="http://yoursite.com/2017/04/07/编码问题/index.html">
 <meta property="og:site_name" content="CHEN's Blog">
-<meta property="og:description" content="在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。于是便开始查询了相关资料。
-其中困扰的问题是：1,windows的自带记事本下的ANSI编码是什么？2,设置了charset=gbk/gb2312为什么还会回乱码？3,pageEncoding和charset的区别？4,如果charset=utf-8又会怎么">
-<meta property="og:updated_time" content="2017-04-07T14:41:11.740Z">
+<meta property="og:description" content="在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。于是便开始查询了相关资料。">
+<meta property="og:updated_time" content="2017-05-02T10:36:15.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于字符编码">
-<meta name="twitter:description" content="在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。于是便开始查询了相关资料。
-其中困扰的问题是：1,windows的自带记事本下的ANSI编码是什么？2,设置了charset=gbk/gb2312为什么还会回乱码？3,pageEncoding和charset的区别？4,如果charset=utf-8又会怎么">
+<meta name="twitter:description" content="在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。于是便开始查询了相关资料。">
   
   
     <link rel="icon" href="/img/xss.png">
@@ -80,11 +77,6 @@
                             <div class="ribbon"></div>
                         </div>
                         
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
                         
                         <div class="icon-wrap icon-me hide" data-idx="3">
                             <div class="user"></div>
@@ -99,8 +91,6 @@
                     <ul class="tips-inner">
                         <li>菜单</li>
                         <li>标签</li>
-                        
-                        <li>友情链接</li>
                         
                         
                         <li>关于我</li>
@@ -146,24 +136,16 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/杂记/" style="font-size: 20px;">杂记</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/经历/" style="font-size: 10px;">经历</a> <a href="/tags/绕过技巧/" style="font-size: 10px;">绕过技巧</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a> <a href="/tags/课堂笔记/" style="font-size: 10px;">课堂笔记</a>
+                        <a href="/tags/Jsp/" style="font-size: 10px;">Jsp</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/心得/" style="font-size: 10px;">心得</a> <a href="/tags/杂记/" style="font-size: 20px;">杂记</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/经历/" style="font-size: 10px;">经历</a> <a href="/tags/绕过技巧/" style="font-size: 10px;">绕过技巧</a> <a href="/tags/编码/" style="font-size: 10px;">编码</a>
                     </div>
                 </section>
                 
                 
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.wing3.cn/">Swing表哥</a>
-                    
-                    </div>
-                </section>
                 
 
                 
                 
-                <section class="switch-part switch-part4">
+                <section class="switch-part switch-part3">
                 
                     <div id="js-aboutme">哎，我好菜啊！我差不多是个废人了。。。</div>
                 </section>
@@ -263,6 +245,7 @@
       
           
         <p>在学习Jsp的过程中在编写的文件含有中文的情况下即使ContenType里的charset=gb2312的时候，客户端显示的页面会有乱码情况。<br>于是便开始查询了相关资料。</p>
+<a id="more"></a>
 <div style="text-align: center">其中困扰的问题是：<br>1,windows的自带记事本下的ANSI编码是什么？<br>2,设置了charset=gbk/gb2312为什么还会回乱码？<br>3,pageEncoding和charset的区别？<br>4,如果charset=utf-8又会怎么样？<br></div>
 
 <hr>
@@ -283,7 +266,7 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>下面总结下，如何防止中文乱码。<br>1、对于同一个应用，最好统一编码，推荐为UTF-8，当然GBK也可以。<br>2、正确设置JSP的pageEncoding参数<br>3、在所有的JSP/Servlet中设置contentType=”text/html;charset=UTF-8”或response.setCharacterEncoding(“UTF-8”)，从而间接实现对浏览器编码的设置。</p>
 <h1 id="补充一点"><a href="#补充一点" class="headerlink" title="补充一点"></a>补充一点</h1><p>1.&lt;%@ page contentType=”text/html; charset=utf-8”%&gt;<br>2.&lt;%@ page pageEncoding=”utf-8”%&gt;<br>3.&lt;.meta http-equiv=”Content-Type” content=”text/html; charset=utf-8”&gt;<br>4.&lt;% request.setCharacterEncoding(“utf-8”); %&gt;</p>
 <p>1和2都是jsp本身的编码设置，contenttype是服务器发给客户端的内容编码设置，pageencoding是当前jsp页面的本身的编码</p>
-<p>3是HTML网页的编码方式，如果不是jsp页面，普通的HTML里要设置这个才能让中文不乱码<br><a href="http://www.w3school.com.cn/tags/tag_meta.asp" target="_blank" rel="external">Html.mete标签</a></p>
+<p>3是HTML网页的编码方式，如果不是jsp页面，普通的HTML里要设置这个才能让中文不乱码<br><a href="http://www.w3school.com.cn/tags/tag_meta.asp" target="_blank" rel="external">Html.meta标签</a></p>
 <p>4是HttpRequest对象本身的编码，是客户端请求时的编码格式。</p>
 <hr>
 <h1 id="关于字符编码"><a href="#关于字符编码" class="headerlink" title="关于字符编码"></a>关于字符编码</h1><h2 id="ANSI"><a href="#ANSI" class="headerlink" title="ANSI"></a>ANSI</h2><p>Windows 里说的「ANSI」其实是 Windows code pages，这个模式根据当前locale选定具体的编码，比如简体中文locale下是GBK</p>
@@ -303,7 +286,7 @@
         <p><span>本文标题:</span><a href="/2017/04/07/编码问题/">关于字符编码</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 CHEN 的个人博客">CHEN</a></p>
         <p><span>发布时间:</span>2017年04月07日 - 20时50分</p>
-        <p><span>最后更新:</span>2017年04月07日 - 22时41分</p>
+        <p><span>最后更新:</span>2017年05月02日 - 18时36分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/04/07/编码问题/" title="关于字符编码">http://yoursite.com/2017/04/07/编码问题/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/07/编码问题/　　作者: CHEN" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -400,7 +383,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/编码问题/">关于字符编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/杂谈/">杂谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/XSS绕过技巧/">XSS绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/java/">java</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/记一次搭建博客的经历/">记一次搭建博客的经历</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/编码问题/">关于字符编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/杂谈/">杂谈</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/Linux/">Linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/Markdown/">Markdown</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/XSS绕过技巧/">XSS绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/记一次搭建博客的经历/">记一次搭建博客的经历</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
