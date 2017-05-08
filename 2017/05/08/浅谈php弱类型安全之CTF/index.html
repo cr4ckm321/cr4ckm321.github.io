@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Markdown | CHEN&#39;s Blog</title>
+  <title>浅谈PHP弱类型安全之CTF | CHEN&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="test# test 一级标题">
+  <meta name="description" content="弱类型语言:PHPPHP是一种非常弱的类型语言，在大多数编程语言中，变量只能保存一种类型的数据，而且这个类型必须在使用变量之前声明，例如C语言。而在PHP中，变量的类型是由赋给变量的指确定。所有PHP也是一种动态类型语言。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown">
-<meta property="og:url" content="http://yoursite.com/2016/08/28/Markdown/index.html">
+<meta property="og:title" content="浅谈PHP弱类型安全之CTF">
+<meta property="og:url" content="http://yoursite.com/2017/05/08/浅谈php弱类型安全之CTF/index.html">
 <meta property="og:site_name" content="CHEN's Blog">
-<meta property="og:description" content="test# test 一级标题">
-<meta property="og:image" content="https://chengui1in.github.io/img/xss.png">
-<meta property="og:updated_time" content="2017-05-02T10:41:51.162Z">
+<meta property="og:description" content="弱类型语言:PHPPHP是一种非常弱的类型语言，在大多数编程语言中，变量只能保存一种类型的数据，而且这个类型必须在使用变量之前声明，例如C语言。而在PHP中，变量的类型是由赋给变量的指确定。所有PHP也是一种动态类型语言。">
+<meta property="og:updated_time" content="2017-05-08T05:59:58.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Markdown">
-<meta name="twitter:description" content="test# test 一级标题">
-<meta name="twitter:image" content="https://chengui1in.github.io/img/xss.png">
+<meta name="twitter:title" content="浅谈PHP弱类型安全之CTF">
+<meta name="twitter:description" content="弱类型语言:PHPPHP是一种非常弱的类型语言，在大多数编程语言中，变量只能保存一种类型的数据，而且这个类型必须在使用变量之前声明，例如C语言。而在PHP中，变量的类型是由赋给变量的指确定。所有PHP也是一种动态类型语言。">
   
   
     <link rel="icon" href="/img/xss.png">
@@ -208,11 +206,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="[layout]-Markdown" class="article article-type-[layout]" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="[layout]-浅谈php弱类型安全之CTF" class="article article-type-[layout]" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/28/Markdown/" class="article-date">
-      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">2016-08-28</time>
+      <a href="/2017/05/08/浅谈php弱类型安全之CTF/" class="article-date">
+      <time datetime="2017-05-08T02:47:54.000Z" itemprop="datePublished">2017-05-08</time>
 </a>
     </div>
   
@@ -225,7 +223,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Markdown
+      浅谈PHP弱类型安全之CTF
     </h1>
   
 
@@ -236,7 +234,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP弱类型/">PHP弱类型</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -246,13 +244,33 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1><p><code># test</code> 一级标题<br><a id="more"></a><br><code>&lt;!--more--&gt;</code> hexo的阅读全文标签</p>
-<h2 id="test-1"><a href="#test-1" class="headerlink" title="test"></a>test</h2><p><code>## test</code> 二级标题</p>
-<h3 id="test-2"><a href="#test-2" class="headerlink" title="test"></a>test</h3><p><code>### test</code> 三级标题</p>
-<h4 id="test-3"><a href="#test-3" class="headerlink" title="test"></a>test</h4><p><code>#### test</code> 四级标题</p>
-<h5 id="test-4"><a href="#test-4" class="headerlink" title="test"></a>test</h5><p><code>##### test</code> 五级标题</p>
-<p><img src="https://chengui1in.github.io/img/xss.png" alt="image"><br>图片：<code>![name](路径)</code></p>
+        <h1 id="弱类型语言-PHP"><a href="#弱类型语言-PHP" class="headerlink" title="弱类型语言:PHP"></a>弱类型语言:PHP</h1><p>PHP是一种非常弱的类型语言，在大多数编程语言中，变量只能保存一种类型的数据，而且这个类型必须在使用变量之前声明，例如C语言。而在PHP中，变量的类型是由赋给变量的指确定。所有PHP也是一种动态类型语言。<br><a id="more"></a><br>因此在PHP中，可进行如下赋值：<br>    $a = 123;<br>    $a = “abc”;<br>    $a = arry();</p>
+<h2 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a>比较操作符</h2><h3 id="等于操作符"><a href="#等于操作符" class="headerlink" title="等于操作符"></a>等于操作符</h3><p><code>$a == $b</code></p>
+<p>在这中情况下存在类型转换的问题，比如<br>    123 == ‘123’     //ture<br>    1 == ‘1abc’      //ture<br>    0 == ‘abc’       //ture<br>    intval(‘3389a’)    //输出3389<br>    “0e132456789” == “0e7124511451155”  //ture<br>    “0e132456789” == “0e1”              //ture<br><code>0 == &#39;abc&#39;</code>为<code>true</code>是因为int型和字符串型比较，字符串型会初始化为整型。’abc’会被初始化为0。</p>
+<p>后面两种<code>0e\d+</code>这种情况的比较，php就会将这种字符串解析为科学计数法，并且判断为相等。<br>如果不满足<code>0e\d+</code>这种模式就不会相等。<br>在CTF中就会考察到该类型。附上做过的一道题：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'user'</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>($_GET[<span class="string">'password'</span>])) &#123;</div><div class="line">    <span class="keyword">if</span> (!ctype_alpha($_GET[<span class="string">'user'</span>]))&#123;<span class="keyword">echo</span> <span class="string">'Wrong.'</span>;&#125;</div><div class="line">    <span class="keyword">if</span> (!is_numeric($_GET[<span class="string">'password'</span>]))&#123;<span class="keyword">echo</span> <span class="string">'Wrong.'</span>;&#125;</div><div class="line">    <span class="keyword">if</span> (md5($_GET[<span class="string">'user'</span>]) == md5($_GET[<span class="string">'password'</span>])) &#123;</div><div class="line">        <span class="keyword">echo</span> (<span class="string">'Flag: '</span>.$flag);</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">'Wrong.'</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从上面的代码可看出，要想获取flag的话。<code>user</code>要设置为非字符，<code>password</code>要设置为非数字。并且md5()返回的值相同。所以可利用上面说的<code>0e\d+</code>这种模式便可绕过。<br>    240610708       md5(‘240610708’);   // 0e462097431906509019562988736854<br>    QNKCDZO         md5(‘QNKCDZO’);     // 0e830400451993494058024219903391<br>类似的还有:<br>    md5(‘aabg7XSs’) == md5(‘aabC9RqS’));<br>    sha1(‘aaroZmOk’) == sha1(‘aaK1STfY’));<br>    sha1(‘aaO8zKZF’) == sha1(‘aa3OFF9m’));<br>防御:<br>对上面出现的弱类型可用<code>$a === $b</code>进行防御。</p>
+<h3 id="恒等操作符"><a href="#恒等操作符" class="headerlink" title="恒等操作符:"></a>恒等操作符:</h3><p><code>$a === $b</code></p>
+<p>但恒等于也存在可被绕过的问题，下面一题也是CTF中常涉及的一道题。<br>此题涉及到md5()函数的参数类型。</p>
+<p><code>string md5 ( string $str [, bool $raw_output = false ] )</code></p>
+<p>md5()函数需求接收的是String类型的参数，但当我们传入的是arry时，md5()只会警告<code>Warning: md5() expects parameter 1 to be string, array given</code>并无法计算出arry的md5值，这样我们传入两个arry参数时，会返回两个NULL值，也就是造成NULL=NULL，从而可成功绕过<code>$a === $b</code>这样的判断。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'a'</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>($_GET[<span class="string">'b'</span>])) &#123;</div><div class="line">    <span class="keyword">if</span> ($_GET[<span class="string">'a'</span>] != $_GET[<span class="string">'b'</span>]) &#123;</div><div class="line">    	<span class="keyword">if</span> (md5($_GET[<span class="string">'a'</span>]) === md5($_GET[<span class="string">'b'</span>])) &#123;</div><div class="line">            <span class="keyword">echo</span> (<span class="string">'Flag: '</span>.$flag);</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">echo</span> <span class="string">'Wrong.'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">echo</span> <span class="string">'Wrong.'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>防御:<br>对于此类的防御是,在获取从变量前先判断获取的变量是否是数组便可。</p>
+<h2 id="比较函数"><a href="#比较函数" class="headerlink" title="比较函数"></a>比较函数</h2><h3 id="strcmp"><a href="#strcmp" class="headerlink" title="strcmp()"></a>strcmp()</h3><p><code>int strcmp ( string $str1 , string $str2 )</code><br>strcmp()函数对传入的两个字符串参数进行比较。该函数返回：</p>
+<pre><code> 0 - 如果两个字符串相等
+&lt;0 - 如果 string1 小于 string2
+&gt;0 - 如果 string1 大于 string2
+</code></pre><p>strcmp()函数本质上是将两个参数转换为ascii然后在做数学的减法，再返回一个int的值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'password'</span>])) &#123;</div><div class="line">    <span class="keyword">if</span> (strcmp($_GET[<span class="string">'password'</span>], $flag) == <span class="number">0</span>)</div><div class="line">        <span class="keyword">die</span>(<span class="string">'Flag: '</span>.$flag);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'Invalid password'</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>上面的代码看来，只要判断<code>password</code>与<code>$flag</code>相等，便可返回Flag。<br>这里可传入<code>password[]=x</code>便可使这个函数出错返回NULL。此时NULL==0，是bool(true)。这样便可成功绕过。</p>
+<h1 id="另注"><a href="#另注" class="headerlink" title="另注"></a>另注</h1><pre><code>先注册密码为240610708的用户A。
+然后用密码QNKCDZO尝试登录用户A。
+倘若成功登录，则证明此网站采用了不完备的加密体制md5一次加密。
 
+先注册密码为0E33455555的用户A。
+然后用密码0E234230570345尝试登录用户A。
+倘若成功登录，则证明此网站采用了明文进行存储密码！
+</code></pre>
       
     </div>
     
@@ -260,13 +278,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/08/28/Markdown/">Markdown</a></p>
+        <p><span>本文标题:</span><a href="/2017/05/08/浅谈php弱类型安全之CTF/">浅谈PHP弱类型安全之CTF</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 CHEN 的个人博客">CHEN</a></p>
-        <p><span>发布时间:</span>2016年08月28日 - 10时47分</p>
-        <p><span>最后更新:</span>2017年05月02日 - 18时41分</p>
+        <p><span>发布时间:</span>2017年05月08日 - 10时47分</p>
+        <p><span>最后更新:</span>2017年05月08日 - 13时59分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/08/28/Markdown/" title="Markdown">http://yoursite.com/2016/08/28/Markdown/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/28/Markdown/　　作者: CHEN" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/08/浅谈php弱类型安全之CTF/" title="浅谈PHP弱类型安全之CTF">http://yoursite.com/2017/05/08/浅谈php弱类型安全之CTF/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/05/08/浅谈php弱类型安全之CTF/　　作者: CHEN" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -279,18 +297,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/04/06/杂谈/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          杂谈
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/28/Linux/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux</div>
+    <a href="/2017/04/07/编码问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于字符编码</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -301,7 +310,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#test"><span class="toc-number">1.</span> <span class="toc-text">test</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#test-1"><span class="toc-number">1.1.</span> <span class="toc-text">test</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test-2"><span class="toc-number">1.1.1.</span> <span class="toc-text">test</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#test-3"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">test</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#test-4"><span class="toc-number">1.1.1.1.1.</span> <span class="toc-text">test</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#弱类型语言-PHP"><span class="toc-number">1.</span> <span class="toc-text">弱类型语言:PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#比较操作符"><span class="toc-number">1.1.</span> <span class="toc-text">比较操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#等于操作符"><span class="toc-number">1.1.1.</span> <span class="toc-text">等于操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#恒等操作符"><span class="toc-number">1.1.2.</span> <span class="toc-text">恒等操作符:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较函数"><span class="toc-number">1.2.</span> <span class="toc-text">比较函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#strcmp"><span class="toc-number">1.2.1.</span> <span class="toc-text">strcmp()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#另注"><span class="toc-number">2.</span> <span class="toc-text">另注</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -337,7 +346,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/08/28/Markdown/" data-title="Markdown" data-url="http://yoursite.com/2016/08/28/Markdown/"></div>
+    <div class="ds-thread" data-thread-key="2017/05/08/浅谈php弱类型安全之CTF/" data-title="浅谈PHP弱类型安全之CTF" data-url="http://yoursite.com/2017/05/08/浅谈php弱类型安全之CTF/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -360,13 +369,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/06/杂谈/" title="上一篇: 杂谈">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/08/28/Linux/" title="下一篇: Linux">
+            <a href="/2017/04/07/编码问题/" title="下一篇: 关于字符编码">
                 <i class="fa fa-angle-right"></i>
             </a>
         
