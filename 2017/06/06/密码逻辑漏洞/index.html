@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Linux | CHEN&#39;s Blog</title>
+  <title>逻辑漏洞 Ⅰ | CHEN&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一般来说著名的linux系统基本上分两大类：1.RedHat系列：Redhat、Centos、Fedora等2.Debian系列：Debian、Ubuntu等">
+  <meta name="description" content="逻辑漏洞–&amp;gt;密码重置密码找回">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux">
-<meta property="og:url" content="http://yoursite.com/2016/08/28/Linux/index.html">
+<meta property="og:title" content="逻辑漏洞 Ⅰ">
+<meta property="og:url" content="http://yoursite.com/2017/06/06/密码逻辑漏洞/index.html">
 <meta property="og:site_name" content="CHEN's Blog">
-<meta property="og:description" content="一般来说著名的linux系统基本上分两大类：1.RedHat系列：Redhat、Centos、Fedora等2.Debian系列：Debian、Ubuntu等">
-<meta property="og:updated_time" content="2017-05-02T10:38:22.662Z">
+<meta property="og:description" content="逻辑漏洞–&amp;gt;密码重置密码找回">
+<meta property="og:updated_time" content="2017-06-07T12:51:51.854Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux">
-<meta name="twitter:description" content="一般来说著名的linux系统基本上分两大类：1.RedHat系列：Redhat、Centos、Fedora等2.Debian系列：Debian、Ubuntu等">
+<meta name="twitter:title" content="逻辑漏洞 Ⅰ">
+<meta name="twitter:description" content="逻辑漏洞–&amp;gt;密码重置密码找回">
   
   
     <link rel="icon" href="/img/xss.png">
@@ -206,11 +206,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="[layout]-Linux" class="article article-type-[layout]" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-密码逻辑漏洞" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/28/Linux/" class="article-date">
-      <time datetime="2016-08-28T02:47:54.000Z" itemprop="datePublished">2016-08-28</time>
+      <a href="/2017/06/06/密码逻辑漏洞/" class="article-date">
+      <time datetime="2017-06-06T12:14:54.000Z" itemprop="datePublished">2017-06-06</time>
 </a>
     </div>
   
@@ -223,7 +223,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Linux
+      逻辑漏洞 Ⅰ
     </h1>
   
 
@@ -234,7 +234,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞/">漏洞</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -244,12 +244,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="一般来说著名的linux系统基本上分两大类："><a href="#一般来说著名的linux系统基本上分两大类：" class="headerlink" title="一般来说著名的linux系统基本上分两大类："></a>一般来说著名的linux系统基本上分两大类：</h1><p>1.RedHat系列：Redhat、Centos、Fedora等<br>2.Debian系列：Debian、Ubuntu等 </p>
-<a id="more"></a>
-<h2 id="RedHat-系列"><a href="#RedHat-系列" class="headerlink" title="RedHat 系列"></a>RedHat 系列</h2><p>1 常见的安装包格式 rpm包,安装rpm包的命令是“rpm -参数”<br>2 包管理工具 yum<br>3 支持tar包 </p>
-<h2 id="Debian系列"><a href="#Debian系列" class="headerlink" title="Debian系列"></a>Debian系列</h2><p>1 常见的安装包格式 deb包,安装deb包的命令是“dpkg -参数”<br>2 包管理工具 apt-get<br>3 支持tar包 </p>
-<h3 id="一、yum安装。"><a href="#一、yum安装。" class="headerlink" title="一、yum安装。"></a>一、yum安装。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">yum安装常用软件的命令</div><div class="line">#yum check-update</div><div class="line">#yum remove 软件包名</div><div class="line">#yum install 软件包名</div><div class="line">#yum update 软件包名</div><div class="line">yum命令常见使用方法</div><div class="line">yum -y install 包名（支持*） ：自动选择y，全自动</div><div class="line">yum install 包名（支持*） ：手动选择y or n</div><div class="line">yum remove 包名（不支持*）</div><div class="line">rpm -ivh 包名（支持*）：安装rpm包</div><div class="line">rpm -e 包名（不支持*）：卸载rpm包</div></pre></td></tr></table></figure>
-<h3 id="二、apt-get安装。"><a href="#二、apt-get安装。" class="headerlink" title="二、apt-get安装。"></a>二、apt-get安装。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">apt-cache search package 搜索软件包</div><div class="line">apt-cache show package 获取包的相关信息，如说明、大小、版本等</div><div class="line">sudo apt-get install package 安装包</div><div class="line">sudo apt-get install package --reinstall 重新安装包</div><div class="line">sudo apt-get -f install 修复安装</div><div class="line">sudo apt-get remove package 删除包</div><div class="line">sudo apt-get remove package --purge 删除包，包括配置文件等</div><div class="line">sudo apt-get update 更新源</div><div class="line">sudo apt-get upgrade 更新已安装的包</div><div class="line">sudo apt-get dist-upgrade 升级系统</div><div class="line">apt-cache depends package 了解使用该包依赖那些包</div><div class="line">apt-cache rdepends package 查看该包被哪些包依赖</div><div class="line">sudo apt-get build-dep package 安装相关的编译环境</div><div class="line">apt-get source package 下载该包的源代码</div><div class="line">sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包</div><div class="line">sudo apt-get check 检查是否有损坏的依赖</div></pre></td></tr></table></figure>
+        <h1 id="逻辑漏洞–-gt-密码重置"><a href="#逻辑漏洞–-gt-密码重置" class="headerlink" title="逻辑漏洞–&gt;密码重置"></a>逻辑漏洞–&gt;密码重置</h1><h1 id="密码找回"><a href="#密码找回" class="headerlink" title="密码找回"></a><div style="text-align: center">密码找回</div></h1><a id="more"></a>
+<h2 id="0x00-密码找回验证条件可社工"><a href="#0x00-密码找回验证条件可社工" class="headerlink" title="0x00 密码找回验证条件可社工"></a>0x00 密码找回验证条件可社工</h2><p>验证帐号与邮箱地址是否匹配即可<br>验证帐号与手机号是否匹配即可<br><a href="https://www.baidu.com" target="_blank" rel="external">.</a></p>
+<h2 id="0x01-验证码可爆破"><a href="#0x01-验证码可爆破" class="headerlink" title="0x01 验证码可爆破"></a>0x01 验证码可爆破</h2><p>验证码多用户通用<br>用户认证体系存在漏洞<br>验证码时效长，可暴力破解验证码<br><a href=""></a></p>
+<h2 id="0x02-修改密码未验证用户"><a href="#0x02-修改密码未验证用户" class="headerlink" title="0x02 修改密码未验证用户"></a>0x02 修改密码未验证用户</h2><p>结构控制不严格，服务端未进行验证。<br>用户ID或邮箱出现在URL，可直接修改。<br><a href=""></a></p>
+<h2 id="0x03-密码修改页面可预测"><a href="#0x03-密码修改页面可预测" class="headerlink" title="0x03 密码修改页面可预测"></a>0x03 密码修改页面可预测</h2><p>可预测URL，直接执行下一步URL可绕过。<br><a href=""></a></p>
+<h2 id="0x04-重置密码新密码出现在返回的数据包中"><a href="#0x04-重置密码新密码出现在返回的数据包中" class="headerlink" title="0x04 重置密码新密码出现在返回的数据包中"></a>0x04 重置密码新密码出现在返回的数据包中</h2><p><a href=""></a></p>
+<h2 id="0x05-密码重置验证码出现在返回数据包中"><a href="#0x05-密码重置验证码出现在返回数据包中" class="headerlink" title="0x05 密码重置验证码出现在返回数据包中"></a>0x05 密码重置验证码出现在返回数据包中</h2><p><a href=""></a></p>
+<h2 id="0x06-验证码接收帐号由客户端决定"><a href="#0x06-验证码接收帐号由客户端决定" class="headerlink" title="0x06 验证码接收帐号由客户端决定"></a>0x06 验证码接收帐号由客户端决定</h2><p>Burp拦截可修改验证码的接收端。<br><a href=""></a></p>
+<h2 id="0x07-修改返回包绕过验证码找回密码"><a href="#0x07-修改返回包绕过验证码找回密码" class="headerlink" title="0x07 修改返回包绕过验证码找回密码"></a>0x07 修改返回包绕过验证码找回密码</h2><p><a href=""></a></p>
+<h2 id="0x08-密码重置验证码多人公用"><a href="#0x08-密码重置验证码多人公用" class="headerlink" title="0x08 密码重置验证码多人公用"></a>0x08 密码重置验证码多人公用</h2><p><a href=""></a></p>
+<h2 id="0x09-修复方案"><a href="#0x09-修复方案" class="headerlink" title="0x09 修复方案"></a>0x09 修复方案</h2><ul>
+<li>1减少验证码有效时间</li>
+<li>2 使用后即销毁</li>
+<li>3 增加验证码复杂程序，整个md5 不困难吧，</li>
+<li>4 限制该功能单个ip提交频率</li>
+<li>5 对重要参数加入验证码同步信息或时间戳；</li>
+<li>6 重置密码后，新密码不应返回在数据包中。</li>
+<li>7 接收验证码的帐号由服务端提供，不能信任客户端提交的数据</li>
+</ul>
+
       
     </div>
     
@@ -257,13 +271,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/08/28/Linux/">Linux</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/06/密码逻辑漏洞/">逻辑漏洞 Ⅰ</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 CHEN 的个人博客">CHEN</a></p>
-        <p><span>发布时间:</span>2016年08月28日 - 10时47分</p>
-        <p><span>最后更新:</span>2017年05月02日 - 18时38分</p>
+        <p><span>发布时间:</span>2017年06月06日 - 20时14分</p>
+        <p><span>最后更新:</span>2017年06月07日 - 20时51分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/08/28/Linux/" title="Linux">http://yoursite.com/2016/08/28/Linux/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/28/Linux/　　作者: CHEN" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/06/密码逻辑漏洞/" title="逻辑漏洞 Ⅰ">http://yoursite.com/2017/06/06/密码逻辑漏洞/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/06/06/密码逻辑漏洞/　　作者: CHEN" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -276,18 +290,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/08/28/Markdown/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/07/支付逻辑漏洞/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Markdown
+          逻辑漏洞 Ⅱ
         
       </div>
     </a>
   
   
-    <a href="/2016/08/28/XSS绕过技巧/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">XSS绕过技巧</div>
+    <a href="/2017/05/08/浅谈php弱类型安全之CTF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅谈PHP弱类型安全之CTF</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -298,7 +312,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一般来说著名的linux系统基本上分两大类："><span class="toc-number">1.</span> <span class="toc-text">一般来说著名的linux系统基本上分两大类：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RedHat-系列"><span class="toc-number">1.1.</span> <span class="toc-text">RedHat 系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debian系列"><span class="toc-number">1.2.</span> <span class="toc-text">Debian系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、yum安装。"><span class="toc-number">1.2.1.</span> <span class="toc-text">一、yum安装。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、apt-get安装。"><span class="toc-number">1.2.2.</span> <span class="toc-text">二、apt-get安装。</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#逻辑漏洞–-gt-密码重置"><span class="toc-number">1.</span> <span class="toc-text">逻辑漏洞–>密码重置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#密码找回"><span class="toc-number">2.</span> <span class="toc-text">密码找回</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-密码找回验证条件可社工"><span class="toc-number">2.1.</span> <span class="toc-text">0x00 密码找回验证条件可社工</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-验证码可爆破"><span class="toc-number">2.2.</span> <span class="toc-text">0x01 验证码可爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-修改密码未验证用户"><span class="toc-number">2.3.</span> <span class="toc-text">0x02 修改密码未验证用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-密码修改页面可预测"><span class="toc-number">2.4.</span> <span class="toc-text">0x03 密码修改页面可预测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-重置密码新密码出现在返回的数据包中"><span class="toc-number">2.5.</span> <span class="toc-text">0x04 重置密码新密码出现在返回的数据包中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-密码重置验证码出现在返回数据包中"><span class="toc-number">2.6.</span> <span class="toc-text">0x05 密码重置验证码出现在返回数据包中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-验证码接收帐号由客户端决定"><span class="toc-number">2.7.</span> <span class="toc-text">0x06 验证码接收帐号由客户端决定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-修改返回包绕过验证码找回密码"><span class="toc-number">2.8.</span> <span class="toc-text">0x07 修改返回包绕过验证码找回密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-密码重置验证码多人公用"><span class="toc-number">2.9.</span> <span class="toc-text">0x08 密码重置验证码多人公用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09-修复方案"><span class="toc-number">2.10.</span> <span class="toc-text">0x09 修复方案</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -334,7 +348,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/08/28/Linux/" data-title="Linux" data-url="http://yoursite.com/2016/08/28/Linux/"></div>
+    <div class="ds-thread" data-thread-key="2017/06/06/密码逻辑漏洞/" data-title="逻辑漏洞 Ⅰ" data-url="http://yoursite.com/2017/06/06/密码逻辑漏洞/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -357,13 +371,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/08/28/Markdown/" title="上一篇: Markdown">
+            <a href="/2017/06/07/支付逻辑漏洞/" title="上一篇: 逻辑漏洞 Ⅱ">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/08/28/XSS绕过技巧/" title="下一篇: XSS绕过技巧">
+            <a href="/2017/05/08/浅谈php弱类型安全之CTF/" title="下一篇: 浅谈PHP弱类型安全之CTF">
                 <i class="fa fa-angle-right"></i>
             </a>
         
