@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="vQAQv"><meta name="description" content="喜欢电影，喜欢美食，喜欢旅游，也喜欢你~"><link rel="icon" href="/favicon.png"><title>2018红帽杯Web部分wp - vQAQv's blog | Just Do It!</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0"><header class="head"><h1 class="head-title u-fl"><a href="/">vQAQv's blog | Just Do It!</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">Archives</a></li><li class="head-nav__item"><a class="head-nav__link" href="/about">About Me</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-01T00:30:54.000Z">五月 1, 2018</time><h1 class="post__title"><a href="/2018/05/01/2018红帽杯/">2018红帽杯Web部分wp</a></h1><div class="post__main echo"><h1 id="Simple-Upload"><a href="#Simple-Upload" class="headerlink" title="Simple Upload"></a>Simple Upload</h1><p>打开首页burp拦截发现<code>admin=0</code>,尝试修改为<code>admin=1</code></p>
+<p><img src="/image/simple_upload/index.png" alt="admin=0"></p>
+<p>然后发现跳转到<code>upload.html</code>页面</p>
+<p><img src="/image/simple_upload/upload.png" alt="upload.html"></p>
+<p>经尝试，只允许上传<code>jpg/png</code>类型文件。以及收集到系统为<code>linux</code>,Web中间件为<code>Apache Tomcat</code>。</p>
+<p>因此大致思路已经清晰：</p>
+<ul>
+<li>apache文件名截断漏洞</li>
+<li>apache解析漏洞</li>
+<li>修改Content-Type</li>
+<li>图片马</li>
+</ul>
+<p>最终可以通过的是修改<code>Content-Type</code>为<code>image/jpeg</code>即可上传任意文件。</p>
+<p>这里有一处比较需要注意的就是，上传的php并没有作用。但需要注意的是，中间件是<code>Apache Tomcat</code>，所以尝试上传jsp大马。</p>
+<p><img src="/image/simple_upload/jsp.png" alt="jsp.png"></p>
+<p>上传成功且解析！</p>
+<p>最终根目录拿到flag</p>
+<p><img src="/image/simple_upload/flag.png" alt="flag.png"></p>
+<h1 id="Shopping-Log"><a href="#Shopping-Log" class="headerlink" title="Shopping Log"></a>Shopping Log</h1><ul>
+<li><code>http://123.59.141.153/</code>或者<code>http://120.132.95.234/</code></li>
+</ul>
+<p>这道题没什么意思，前面几步都是照实验吧上的题来改的，旧题新出，然后最后一步就是MD5爆破+4位订单号爆破，实在是 🐄</p>
+<p>打开一片空白，只有一句注释<code>&lt;!-- Site is tmvb.com --&gt;</code></p>
+<p>于是终于有机会看到群上面各位大佬的社工了😄</p>
+<p>正确做法：</p>
+<ul>
+<li>修改<code>hosts</code>文件指向<code>www.tmvb.com</code>然后就可以看到：</li>
+</ul>
+<p><img src="/image/shopping_log/index.png" alt="index.png"></p>
+<ul>
+<li>设置 <code>referer:www.dww.com</code> 绕过第一步</li>
+</ul>
+<p><img src="/image/shopping_log/1.png" alt="1.png"></p>
+<ul>
+<li>设置 <code>Accept-Language: ja</code> 绕过第二步</li>
+</ul>
+<p>参考资料：<a href="http://www.lingoes.cn/zh/translator/langcode.htm" target="_blank" rel="external">Language Code Table</a></p>
+<p><code>Japan sales only</code> 意思差不多就是要来自日本。绕过思路：修改<code>Accept-Language</code>或<code>X-Forwarded-For</code>绕过</p>
+<p><img src="/image/shopping_log/2.png" alt="2.png"></p>
+<ul>
+<li>然后页面会跳转定向到一个订单查询页面</li>
+</ul>
+<p><img src="/image/shopping_log/3.png" alt="3.png"></p>
+<ul>
+<li>4位订单号爆破+MD5验证码爆破</li>
+</ul>
+<p>这一步太坑，最后爆破出的订单号就是<code>9588</code>，队里几个人跑了一下午。。。</p>
+<p><img src="/image/shopping_log/4.png" alt="4.png"></p>
+<p><img src="/image/shopping_log/5.png" alt="5.png"></p>
+<p>脚本的话就不贴了，需要的话在网上也是可以找到的，实在找不到再找我。</p>
+<h1 id="guess-id"><a href="#guess-id" class="headerlink" title="guess id"></a>guess id</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">emmmmmmmmmmm,这道题可能是为了防止大佬ak,所以没人做出来，等官方WP</div></pre></td></tr></table></figure>
+<h1 id="biubiubiu"><a href="#biubiubiu" class="headerlink" title="biubiubiu"></a>biubiubiu</h1><p>听说解出来的大多数都是非预期的做法。<code>文件包含+access.log解析</code>getshell</p>
+<p>然而预期的做法是<code>ssrf+gopher</code></p>
+<p>这道题比较接近实战。</p>
+<p>下面讲下非预期的做法：</p>
+<ul>
+<li>文件包含</li>
+</ul>
+<p><code>http://08f43db931ee48ef984062844dcc216747512e8278834ba7.game.ichunqiu.com/index.php?page=../../../../../../etc/passwd</code></p>
+<ul>
+<li>nginx的access.log日志处可随意构造写入</li>
+</ul>
+<p><code>../../../../../../var/log/nginx/access.log</code></p>
+<p><img src="/image/biubiubiu/UA.png" alt="UA"></p>
+<p><img src="/image/biubiubiu/1.png" alt="1.png"></p>
+<p><img src="/image/biubiubiu/shell.png" alt="shell"></p>
+<ul>
+<li>写的shell,能解析，但是服务器有类似狗之类的防菜刀，师傅都是用的过狗。</li>
+</ul>
+<p>剩下的事就是翻flag</p>
+<p><img src="/image/biubiubiu/flag.png" alt="flag"></p>
+<p>预期做法等官方WP</p>
+</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/writeup/">writeup</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">Contact me</a><div class="reward-wrapper clearfix"><img src="/img/wechat.png" title="微信"></div></section></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 vQAQv</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
