@@ -1,4 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="vQAQv"><meta name="description" content="喜欢电影，喜欢美食，喜欢旅游，也喜欢你💖~"><link rel="icon" href="/favicon.png"><title>2018红帽杯Web部分wp - vQAQv's blog | Just Do It!</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:1"><header class="head"><h1 class="head-title u-fl"><a href="/">vQAQv's blog | Just Do It!</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">Archives</a></li><li class="head-nav__item"><a class="head-nav__link" href="/about">About Me</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-01T00:30:54.000Z">五月 1, 2018</time><h1 class="post__title"><a href="/2018/05/01/2018红帽杯/">2018红帽杯Web部分wp</a></h1><div class="post__main echo"><h1 id="Simple-Upload"><a href="#Simple-Upload" class="headerlink" title="Simple Upload"></a>Simple Upload</h1><p>打开首页burp拦截发现<code>admin=0</code>,尝试修改为<code>admin=1</code></p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="vQAQv"><meta name="description" content="喜欢电影，喜欢美食，喜欢旅游，也喜欢你💖~"><link rel="icon" href="/favicon.png"><title>2018红帽杯Web部分wp - vQAQv's blog | Just Do It!</title>
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+<!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]-->
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/fancybox/jquery.fancybox.min.js"></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="vQAQv's blog | Just Do It!" type="application/atom+xml">
+</head><body style="opacity:1"><header class="head"><h1 class="head-title u-fl"><a href="/">vQAQv's blog | Just Do It!</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">Archives</a></li><li class="head-nav__item"><a class="head-nav__link" href="/about">About Me</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-01T00:30:54.000Z">五月 1, 2018</time><h1 class="post__title"><a href="/2018/05/01/2018红帽杯/">2018红帽杯Web部分wp</a></h1><div class="post__main echo"><h1 id="Simple-Upload"><a href="#Simple-Upload" class="headerlink" title="Simple Upload"></a>Simple Upload</h1><p>打开首页burp拦截发现<code>admin=0</code>,尝试修改为<code>admin=1</code></p>
 <p><img src="/image/simple_upload/index.png" alt="admin=0"></p>
 <p>然后发现跳转到<code>upload.html</code>页面</p>
 <p><img src="/image/simple_upload/upload.png" alt="upload.html"></p>
@@ -34,7 +43,7 @@
 <ul>
 <li>设置 <code>Accept-Language: ja</code> 绕过第二步</li>
 </ul>
-<p>参考资料：<a href="http://www.lingoes.cn/zh/translator/langcode.htm" target="_blank" rel="noopener">Language Code Table</a></p>
+<p>参考资料：<a target="_blank" rel="noopener" href="http://www.lingoes.cn/zh/translator/langcode.htm">Language Code Table</a></p>
 <p><code>Japan sales only</code> 意思差不多就是要来自日本。绕过思路：修改<code>Accept-Language</code>或<code>X-Forwarded-For</code>绕过</p>
 <p><img src="/image/shopping_log/2.png" alt="2.png"></p>
 <ul>
@@ -48,7 +57,8 @@
 <p><img src="/image/shopping_log/4.png" alt="4.png"></p>
 <p><img src="/image/shopping_log/5.png" alt="5.png"></p>
 <p>脚本的话就不贴了，需要的话在网上也是可以找到的，实在找不到再找我。</p>
-<h1 id="guess-id"><a href="#guess-id" class="headerlink" title="guess id"></a>guess id</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">emmmmmmmmmmm,这道题可能是为了防止大佬ak,所以没人做出来，等官方WP</span><br></pre></td></tr></table></figure>
+<h1 id="guess-id"><a href="#guess-id" class="headerlink" title="guess id"></a>guess id</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">emmmmmmmmmmm,这道题可能是为了防止大佬ak,所以没人做出来，等官方WP</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h1 id="biubiubiu"><a href="#biubiubiu" class="headerlink" title="biubiubiu"></a>biubiubiu</h1><p>听说解出来的大多数都是非预期的做法。<code>文件包含+access.log解析</code>getshell</p>
 <p>然而预期的做法是<code>ssrf+gopher</code></p>
 <p>这道题比较接近实战。</p>
@@ -70,4 +80,8 @@
 <p>剩下的事就是翻flag</p>
 <p><img src="/image/biubiubiu/flag.png" alt="flag"></p>
 <p>预期做法等官方WP</p>
-</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/writeup/">writeup</a></li><li class="post__tag__item"><a class="post__tag__link" href="/tags/CTF/">CTF</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">Contact me</a><div class="reward-wrapper clearfix"><img src="/img/wechat.png" title="微信"></div></section></main><footer class="foot"><div class="foot-copy">&copy; 2016-2019 vQAQv</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
+</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/writeup/">writeup</a></li><li class="post__tag__item"><a class="post__tag__link" href="/tags/CTF/">CTF</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">Contact me</a><div class="reward-wrapper clearfix"><img src="/img/wechat.png" title="微信"></div></section></main><footer class="foot"><div class="foot-copy">&copy; 2016-2021 vQAQv</div></footer>
+<script src="/js/scroller.js"></script>
+
+<script src="/js/main.js"></script>
+</body></html>
